@@ -78,51 +78,6 @@ export type PageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes = PageDocument;
 
-/**
- * Primary content in *RichText → Primary*
- */
-export interface RichTextSliceDefaultPrimary {
-  /**
-   * Content field in *RichText → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Lorem ipsum...
-   * - **API ID Path**: rich_text.primary.content
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  content: prismic.RichTextField;
-}
-
-/**
- * Default variation for RichText Slice
- *
- * - **API ID**: `default`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<RichTextSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *RichText*
- */
-type RichTextSliceVariation = RichTextSliceDefault;
-
-/**
- * RichText Shared Slice
- *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RichTextSlice = prismic.SharedSlice<
-  "rich_text",
-  RichTextSliceVariation
->;
-
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -137,10 +92,6 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
-      RichTextSlice,
-      RichTextSliceDefaultPrimary,
-      RichTextSliceVariation,
-      RichTextSliceDefault,
     };
   }
 }
