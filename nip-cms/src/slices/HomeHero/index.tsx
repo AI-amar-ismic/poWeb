@@ -1,5 +1,6 @@
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import RichText from "../RichText";
 
 /**
  * Props for `HomeHero`.
@@ -15,7 +16,7 @@ const HomeHero = ({ slice }: HomeHeroProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for home_hero (variation: {slice.variation}) Slices
+      <PrismicRichText field={slice.primary.hero_title} />
     </section>
   );
 };
