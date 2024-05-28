@@ -1,0 +1,113 @@
+{
+  "id": "home_hero",
+  "type": "SharedSlice",
+  "name": "HomeHero",
+  "description": "HomeHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "hero_image": {
+          "type": "Image",
+          "config": {
+            "label": "Hero Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "hero_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Hero Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1"
+          }
+        },
+        "hero_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Hero Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph"
+          }
+        },
+        "primary_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Primary button text",
+            "placeholder": ""
+          }
+        },
+        "primary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary button link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "secondary_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Secondary button text",
+            "placeholder": ""
+          }
+        },
+        "secondary_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary button link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "hero_callout": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Hero callout",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong"
+          }
+        }
+      },
+      "items": {
+        "politike_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Politike title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong"
+          }
+        },
+        "politike_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Politike text",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        },
+        "procitaj_vise_link": {
+          "type": "Link",
+          "config": {
+            "label": "Procitaj vise link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        }
+      }
+    }
+  ]
+}

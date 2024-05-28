@@ -79,6 +79,156 @@ export type PageDocument<Lang extends string = string> =
 export type AllDocumentTypes = PageDocument;
 
 /**
+ * Primary content in *HomeHero → Primary*
+ */
+export interface HomeHeroSliceDefaultPrimary {
+  /**
+   * Hero Image field in *HomeHero → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.primary.hero_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  hero_image: prismic.ImageField<never>;
+
+  /**
+   * Hero Title field in *HomeHero → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.primary.hero_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  hero_title: prismic.TitleField;
+
+  /**
+   * Hero Subtitle field in *HomeHero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.primary.hero_subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  hero_subtitle: prismic.RichTextField;
+
+  /**
+   * Primary button text field in *HomeHero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.primary.primary_button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  primary_button_text: prismic.KeyTextField;
+
+  /**
+   * Primary button link field in *HomeHero → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.primary.primary_button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  primary_button_link: prismic.LinkField;
+
+  /**
+   * Secondary button text field in *HomeHero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.primary.secondary_button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  secondary_button_text: prismic.KeyTextField;
+
+  /**
+   * Secondary button link field in *HomeHero → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.primary.secondary_button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  secondary_button_link: prismic.LinkField;
+
+  /**
+   * Hero callout field in *HomeHero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.primary.hero_callout
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  hero_callout: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *HomeHero → Items*
+ */
+export interface HomeHeroSliceDefaultItem {
+  /**
+   * Politike title field in *HomeHero → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.items[].politike_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  politike_title: prismic.RichTextField;
+
+  /**
+   * Politike text field in *HomeHero → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.items[].politike_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  politike_text: prismic.RichTextField;
+
+  /**
+   * Procitaj vise link field in *HomeHero → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.items[].procitaj_vise_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  procitaj_vise_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for HomeHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomeHeroSliceDefaultPrimary>,
+  Simplify<HomeHeroSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *HomeHero*
+ */
+type HomeHeroSliceVariation = HomeHeroSliceDefault;
+
+/**
+ * HomeHero Shared Slice
+ *
+ * - **API ID**: `home_hero`
+ * - **Description**: HomeHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeHeroSlice = prismic.SharedSlice<
+  "home_hero",
+  HomeHeroSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -137,6 +287,11 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      HomeHeroSlice,
+      HomeHeroSliceDefaultPrimary,
+      HomeHeroSliceDefaultItem,
+      HomeHeroSliceVariation,
+      HomeHeroSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
