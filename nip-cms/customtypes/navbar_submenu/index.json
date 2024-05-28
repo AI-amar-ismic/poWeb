@@ -1,0 +1,17 @@
+{
+  "format": "custom",
+  "id": "navbar_submenu",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      }
+    }
+  },
+  "label": "Navbar submenu",
+  "repeatable": true,
+  "status": true
+}

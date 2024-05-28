@@ -80,6 +80,78 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Navbar → Menus*
+ */
+export interface NavbarDocumentDataMenusItem {
+  /**
+   * Title field in *Navbar → Menus*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menus[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Content for Navbar documents
+ */
+interface NavbarDocumentData {
+  /**
+   * Logo field in *Navbar*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Menus field in *Navbar*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menus[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  menus: prismic.GroupField<Simplify<NavbarDocumentDataMenusItem>>;
+}
+
+/**
+ * Navbar document from Prismic
+ *
+ * - **API ID**: `navbar`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavbarDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<NavbarDocumentData>, "navbar", Lang>;
+
+interface NavbarSubmenuDocumentData {}
+
+/**
+ * Navbar submenu document from Prismic
+ *
+ * - **API ID**: `navbar_submenu`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavbarSubmenuDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NavbarSubmenuDocumentData>,
+    "navbar_submenu",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice = RichTextSlice;
 
 /**
@@ -152,7 +224,11 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = HomepageDocument | PageDocument;
+export type AllDocumentTypes =
+  | HomepageDocument
+  | NavbarDocument
+  | NavbarSubmenuDocument
+  | PageDocument;
 
 /**
  * Primary content in *HomeHero → Primary*
@@ -362,6 +438,11 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      NavbarDocument,
+      NavbarDocumentData,
+      NavbarDocumentDataMenusItem,
+      NavbarSubmenuDocument,
+      NavbarSubmenuDocumentData,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
