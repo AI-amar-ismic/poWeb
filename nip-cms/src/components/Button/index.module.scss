@@ -1,0 +1,42 @@
+@import "../../styles/variables.scss";
+
+.button {
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    padding: 15px 41px;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    border-radius: 0;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.primary {
+        background-color: $dark-blue;
+        color: white;
+    }
+
+    &.primaryOutlined {
+        border: 1px solid $dark-blue;
+        color: $dark-blue;
+    }
+
+    &.secondary {
+        background-color: $gold;
+        color: white;
+    }
+
+    &.secondaryOutlined {
+        border: 1px solid $gold;
+        color: $gold;
+    }
+
+    &.tertiaryOutlined {
+        border: 1px solid white;
+        color: white;
+    }
+}

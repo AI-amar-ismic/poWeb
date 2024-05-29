@@ -1,7 +1,9 @@
+"use client";
 import { PrismicDocumentWithUID } from "@prismicio/client";
 import { NavbarDocumentData, Simplify } from "../../../prismicio-types";
 import styles from "./index.module.scss";
 import { PrismicNextImage } from "@prismicio/next";
+import NiPButton from "../Button";
 
 interface NavbarProps {
   data: Simplify<NavbarDocumentData>;
@@ -10,11 +12,22 @@ interface NavbarProps {
 const Navbar = ({ data }: NavbarProps) => {
   return (
     <div className={styles.container}>
-      <PrismicNextImage field={data.logo} />
-
-      {data.menus.map((menu, i) => (
-        <p key={i}>{menu.title}</p>
-      ))}
+      <div className={styles.content}>
+        <PrismicNextImage field={data.logo} />
+        <div className={styles.menuItemsContainer}>
+          {data.menus.map((menu, i) => (
+            <p key={i}>{menu.title}</p>
+          ))}
+        </div>
+        <div className={styles.buttonsContainer}>
+          <NiPButton variant="secondaryOutlined" onClick={() => {}}>
+            {data.button_1_text as string}
+          </NiPButton>
+          <NiPButton variant="primary">
+            {data.button_2_text as string}
+          </NiPButton>
+        </div>
+      </div>
     </div>
   );
 };

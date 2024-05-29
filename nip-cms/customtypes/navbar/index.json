@@ -39,6 +39,37 @@
             }
           }
         }
+      },
+      "button_1_text": {
+        "type": "Text",
+        "config": {
+          "label": "Button 1 text",
+          "placeholder": ""
+        }
+      },
+      "button_1_link": {
+        "type": "Link",
+        "config": {
+          "label": "Button 1 link",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "select": null
+        }
+      },
+      "button_2_text": {
+        "type": "Text",
+        "config": {
+          "label": "Button 2 text",
+          "placeholder": ""
+        }
+      },
+      "button_2_link": {
+        "type": "Link",
+        "config": {
+          "label": "Button 2 link",
+          "placeholder": "",
+          "select": null
+        }
       }
     }
   }

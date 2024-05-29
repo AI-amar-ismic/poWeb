@@ -120,6 +120,50 @@ interface NavbarDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   menus: prismic.GroupField<Simplify<NavbarDocumentDataMenusItem>>;
+
+  /**
+   * Button 1 text field in *Navbar*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.button_1_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_1_text: prismic.KeyTextField;
+
+  /**
+   * Button 1 link field in *Navbar*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.button_1_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_1_link: prismic.LinkField;
+
+  /**
+   * Button 2 text field in *Navbar*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.button_2_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_2_text: prismic.KeyTextField;
+
+  /**
+   * Button 2 link field in *Navbar*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.button_2_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_2_link: prismic.LinkField;
 }
 
 /**
