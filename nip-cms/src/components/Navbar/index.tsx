@@ -16,7 +16,9 @@ const Navbar = ({ data }: NavbarProps) => {
         <PrismicNextImage field={data.logo} />
         <div className={styles.menuItemsContainer}>
           {data.menus.map((menu, i) => (
-            <p key={i}>{menu.title}</p>
+            <p key={i} className={styles.menuItem}>
+              {menu.title}
+            </p>
           ))}
         </div>
         <div className={styles.buttonsContainer}>

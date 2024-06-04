@@ -7,7 +7,7 @@
     height: 100px;
     width: auto;
     justify-content: center;
-    padding: 0 30px;
+    padding: 0 90px;
 
 
     .content {
@@ -21,7 +21,16 @@
 
         .menuItemsContainer {
             display: flex;
-            gap: 30px;
+            gap: 22px;
+
+            .menuItem {
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 24px;
+                letter-spacing: 0.02em;
+                text-align: left;
+                white-space: nowrap;
+            }
 
         }
 

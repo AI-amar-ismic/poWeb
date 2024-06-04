@@ -32,29 +32,31 @@ const HomeHero = ({ slice }: HomeHeroProps): JSX.Element => {
           backgroundSize: "cover",
         }}
       >
-        <PrismicRichText
-          field={slice.primary.hero_title}
-          components={{
-            heading1: ({ children }) => {
-              return <h1 className={styles.title}>{children}</h1>;
-            },
-          }}
-        />
-        <PrismicRichText
-          field={slice.primary.hero_subtitle}
-          components={{
-            paragraph: ({ children }) => {
-              return <p className={styles.subtitle}>{children}</p>;
-            },
-          }}
-        />
-        <div className={styles.buttonsContainer}>
-          <NiPButton variant="tertiaryOutlined">
-            {slice.primary.primary_button_text}
-          </NiPButton>
-          <NiPButton variant="tertiary">
-            {slice.primary.secondary_button_text}
-          </NiPButton>
+        <div className={styles.contentContainer}>
+          <PrismicRichText
+            field={slice.primary.hero_title}
+            components={{
+              heading1: ({ children }) => {
+                return <h1 className={styles.title}>{children}</h1>;
+              },
+            }}
+          />
+          <PrismicRichText
+            field={slice.primary.hero_subtitle}
+            components={{
+              paragraph: ({ children }) => {
+                return <p className={styles.subtitle}>{children}</p>;
+              },
+            }}
+          />
+          <div className={styles.buttonsContainer}>
+            <NiPButton variant="tertiaryOutlined">
+              {slice.primary.primary_button_text}
+            </NiPButton>
+            <NiPButton variant="tertiary">
+              {slice.primary.secondary_button_text}
+            </NiPButton>
+          </div>
         </div>
       </div>
       <div className={styles.calloutContainer}>
