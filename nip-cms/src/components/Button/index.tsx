@@ -8,6 +8,7 @@ interface NiPButtonProps {
     | "secondary"
     | "secondaryOutlined"
     | "tertiaryOutlined"
+    | "tertiary"
     | undefined;
   onClick?: () => void;
   children: React.ReactNode;
@@ -30,6 +31,8 @@ const NiPButton = ({
         return styles.secondaryOutlined;
       case "tertiaryOutlined":
         return styles.tertiaryOutlined;
+      case "tertiary":
+        return styles.tertiary;
       default:
         return styles.primary;
     }

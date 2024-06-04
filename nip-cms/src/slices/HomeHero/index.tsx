@@ -1,6 +1,15 @@
 import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import {
+  PrismicImage,
+  PrismicRichText,
+  SliceComponentProps,
+} from "@prismicio/react";
 import RichText from "../RichText";
+import styles from "./homeHero.module.scss";
+import { url } from "inspector";
+import NiPButton from "@/components/Button";
+import { ArrowIcon } from "@/assets/icons";
+import { PrismicNextLink } from "@prismicio/next";
 
 /**
  * Props for `HomeHero`.
@@ -16,7 +25,80 @@ const HomeHero = ({ slice }: HomeHeroProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <PrismicRichText field={slice.primary.hero_title} />
+      <div
+        className={styles.imageContainer}
+        style={{
+          backgroundImage: `url(${slice.primary.hero_image.url})`,
+          backgroundSize: "cover",
+        }}
+      >
+        <PrismicRichText
+          field={slice.primary.hero_title}
+          components={{
+            heading1: ({ children }) => {
+              return <h1 className={styles.title}>{children}</h1>;
+            },
+          }}
+        />
+        <PrismicRichText
+          field={slice.primary.hero_subtitle}
+          components={{
+            paragraph: ({ children }) => {
+              return <p className={styles.subtitle}>{children}</p>;
+            },
+          }}
+        />
+        <div className={styles.buttonsContainer}>
+          <NiPButton variant="tertiaryOutlined">
+            {slice.primary.primary_button_text}
+          </NiPButton>
+          <NiPButton variant="tertiary">
+            {slice.primary.secondary_button_text}
+          </NiPButton>
+        </div>
+      </div>
+      <div className={styles.calloutContainer}>
+        <PrismicRichText
+          field={slice.primary.hero_callout}
+          components={{
+            heading1: ({ children }) => {
+              return <h1 className={styles.callout}>{children}</h1>;
+            },
+          }}
+        />
+        <ArrowIcon />
+        <div className={styles.blueSection}>
+          {slice.items.map((item, i) => (
+            <div
+              key={`${item.politike_title}-${i}`}
+              className={styles.blueTextContainer}
+            >
+              <div className={styles.numberTitleContainer}>
+                <h1 className={styles.number}>{i + 1}</h1>
+                <PrismicRichText
+                  field={item.politike_title}
+                  components={{
+                    heading2: ({ children }) => {
+                      return <h2 className={styles.title}>{children}</h2>;
+                    },
+                  }}
+                />
+              </div>
+              <PrismicRichText
+                field={item.politike_text}
+                components={{
+                  paragraph: ({ children }) => {
+                    return <p className={styles.subText}>{children}</p>;
+                  },
+                }}
+              />
+              <PrismicNextLink field={item.procitaj_vise_link}>
+                <p className={styles.subText}>Pročitaj više</p>
+              </PrismicNextLink>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

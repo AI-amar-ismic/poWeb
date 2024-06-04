@@ -1,0 +1,117 @@
+@import "../../styles/variables.scss";
+
+.imageContainer {
+    width: 100%;
+    height: 580px;
+    padding: 100px 100px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 16px;
+
+    .title {
+        color: white;
+        width: 720px;
+        font-size: 80px;
+        font-weight: 700;
+        line-height: 73px;
+        letter-spacing: 0.02em;
+        text-align: right;
+
+    }
+
+    .subtitle {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-align: right;
+        color: white;
+        width: 603px;
+    }
+
+    .buttonsContainer {
+        display: flex;
+        gap: 40px;
+    }
+}
+
+.calloutContainer {
+    display: flex;
+    width: 100%;
+    height: 403px;
+    padding: 110px;
+    gap: 19px;
+    background-color: $pale-gold;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+
+    .callout {
+        font-size: 55px;
+        font-weight: 800;
+        line-height: 51px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        width: 260px;
+        color: $blue;
+    }
+
+    .blueSection {
+        position: absolute;
+        display: flex;
+        padding: 78px 92px 78px 68px;
+        gap: 10px;
+        top: -50px;
+        right: 0;
+        background-color: $dark-blue;
+        width: 906px;
+
+        .blueTextContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            border-right: 1px solid white;
+            padding: 0 0 0 10px;
+
+            &:last-child {
+                border-right: none;
+            }
+
+            .numberTitleContainer {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+
+                .number {
+                    font-size: 80px;
+                    font-weight: 800;
+                    line-height: 24px;
+                    letter-spacing: 0.02em;
+                    text-align: left;
+                    color: white;
+                }
+
+                .title {
+                    font-size: 26px;
+                    font-weight: 600;
+                    line-height: 26px;
+                    letter-spacing: 0.02em;
+                    text-align: left;
+                    color: white;
+
+                }
+            }
+
+            .subText {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 24px;
+                letter-spacing: 0.02em;
+                text-align: left;
+                color: white;
+            }
+
+        }
+    }
+}

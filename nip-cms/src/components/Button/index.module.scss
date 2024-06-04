@@ -39,4 +39,9 @@
         border: 1px solid white;
         color: white;
     }
+
+    &.tertiary {
+        background-color: white;
+        color: $dark-blue;
+    }
 }
