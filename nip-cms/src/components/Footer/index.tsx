@@ -37,10 +37,14 @@ const Footer = ({ data }: FooterProps) => {
             </div>
           </div>
           <div className={styles.buttonSection}>
-            <NiPButton variant="secondaryOutlined" link={data.button_1_link}>
+            <NiPButton
+              fullWidth
+              variant="secondaryOutlined"
+              link={data.button_1_link}
+            >
               {data.button_1_text}
             </NiPButton>
-            <NiPButton variant="primary" link={data.button_2_link}>
+            <NiPButton fullWidth variant="primary" link={data.button_2_link}>
               {data.button_2_text}
             </NiPButton>
           </div>

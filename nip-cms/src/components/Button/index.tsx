@@ -14,6 +14,7 @@ interface NiPButtonProps {
   onClick?: () => void;
   children: React.ReactNode;
   link?: LinkField;
+  fullWidth?: boolean;
 }
 
 const NiPButton = ({
@@ -21,6 +22,7 @@ const NiPButton = ({
   onClick,
   children,
   link,
+  fullWidth,
 }: NiPButtonProps) => {
   const getColor = () => {
     switch (variant) {
@@ -42,7 +44,10 @@ const NiPButton = ({
   };
 
   const button = (
-    <button onClick={onClick} className={`${styles.button} ${getColor()}`}>
+    <button
+      onClick={onClick}
+      className={`${styles.button} ${getColor()} ${fullWidth ? styles.fullWidth : ""}`}
+    >
       {children}
     </button>
   );

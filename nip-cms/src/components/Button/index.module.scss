@@ -15,6 +15,10 @@
         cursor: pointer;
     }
 
+    &.fullWidth {
+        width: 100%;
+    }
+
     &.primary {
         background-color: $dark-blue;
         color: white;
