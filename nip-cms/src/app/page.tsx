@@ -33,10 +33,63 @@ export default async function Index() {
   // The client queries content from the Prismic API
   //
   const client = createClient();
-  const home = await client.getByUID("homepage", "homepage");
+  const home = await client.getByUID("homepage", "homepage", {
+    graphQuery: `{
+    homepage{
+      ...homepageFields
+      slices {
+        ...on home_hero {
+          variation {
+            ...on default {
+              primary {
+                ...primaryFields
+              }
+              items {
+                ...itemsFields
+              }
+            }
+          }
+        }
+        ...on newsletter {
+          variation {
+            ...on default {
+              primary {
+                ...primaryFields
+              }
+              items {
+                ...itemsFields
+              }
+            }
+          }
+        }
+        ...on nasi_ljudi {
+          variation {
+            ...on default {
+              primary {
+                ...primaryFields
+              }
+              items {
+                covjek {
+                  ...on nasi_ljudi {
+                    slika
+                    ime_prezime
+                    pozicija
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+   }`,
+  });
   const heroSlice = home.data.slices.slice(0, 1);
-  const newsLetterSlice = home.data.slices.slice(1, 2);
-  const latestNews = await client.getAllByType("clanak", { limit: 3 });
+  const otherSlices = home.data.slices.slice(1, undefined);
+  const latestNews = await client.getAllByType("clanak", {
+    limit: 3,
+    orderings: { field: "document.first_publication_date", direction: "desc" },
+  });
 
   return (
     <>
@@ -47,7 +100,7 @@ export default async function Index() {
         data={latestNews}
         buttonText={home.data.novosti_dugme_tekst as string}
       />
-      <SliceZone slices={newsLetterSlice} components={components} />
+      <SliceZone slices={otherSlices} components={components} />
     </>
   );
 }

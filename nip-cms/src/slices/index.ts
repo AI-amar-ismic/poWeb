@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 export const components = {
   citat: dynamic(() => import("./Citat")),
   home_hero: dynamic(() => import("./HomeHero")),
+  nasi_ljudi: dynamic(() => import("./NasiLjudi")),
   newsletter: dynamic(() => import("./Newsletter")),
   rich_text: dynamic(() => import("./RichText")),
 };

@@ -29,6 +29,14 @@
           "allowTargetBlank": false,
           "multi": "paragraph"
         }
+      },
+      "slika": {
+        "type": "Image",
+        "config": {
+          "label": "Slika",
+          "constraint": {},
+          "thumbnails": []
+        }
       }
     }
   }

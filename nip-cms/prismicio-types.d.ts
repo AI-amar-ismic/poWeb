@@ -292,6 +292,7 @@ export type FooterDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
 
 type HomepageDocumentDataSlicesSlice =
+  | NasiLjudiSlice
   | CitatSlice
   | NewsletterSlice
   | HomeHeroSlice;
@@ -343,39 +344,6 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   novosti_dugme_tekst: prismic.KeyTextField;
-
-  /**
-   * Nasi ljudi naslov field in *Homepage*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.nasi_ljudi_naslov
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  nasi_ljudi_naslov: prismic.TitleField;
-
-  /**
-   * Nasi ljudi podnaslov field in *Homepage*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.nasi_ljudi_podnaslov
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  nasi_ljudi_podnaslov: prismic.RichTextField;
-
-  /**
-   * Nasi ljudi dugme tekst field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.nasi_ljudi_dugme_tekst
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  nasi_ljudi_dugme_tekst: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Homepage*
@@ -461,6 +429,17 @@ interface NasiLjudiDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   pozicija: prismic.RichTextField;
+
+  /**
+   * Slika field in *Nasi ljudi*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.slika
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  slika: prismic.ImageField<never>;
 }
 
 /**
@@ -899,6 +878,86 @@ export type HomeHeroSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *NasiLjudi → Primary*
+ */
+export interface NasiLjudiSliceDefaultPrimary {
+  /**
+   * Title field in *NasiLjudi → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Subtitle field in *NasiLjudi → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Button text field in *NasiLjudi → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *NasiLjudi → Items*
+ */
+export interface NasiLjudiSliceDefaultItem {
+  /**
+   * Covjek field in *NasiLjudi → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.items[].covjek
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  covjek: prismic.LinkField;
+}
+
+/**
+ * Default variation for NasiLjudi Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NasiLjudiSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NasiLjudiSliceDefaultPrimary>,
+  Simplify<NasiLjudiSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *NasiLjudi*
+ */
+type NasiLjudiSliceVariation = NasiLjudiSliceDefault;
+
+/**
+ * NasiLjudi Shared Slice
+ *
+ * - **API ID**: `nasi_ljudi`
+ * - **Description**: NasiLjudi
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NasiLjudiSlice = prismic.SharedSlice<
+  "nasi_ljudi",
+  NasiLjudiSliceVariation
+>;
+
+/**
  * Primary content in *Newsletter → Primary*
  */
 export interface NewsletterSliceDefaultPrimary {
@@ -1058,6 +1117,11 @@ declare module "@prismicio/client" {
       HomeHeroSliceDefaultItem,
       HomeHeroSliceVariation,
       HomeHeroSliceDefault,
+      NasiLjudiSlice,
+      NasiLjudiSliceDefaultPrimary,
+      NasiLjudiSliceDefaultItem,
+      NasiLjudiSliceVariation,
+      NasiLjudiSliceDefault,
       NewsletterSlice,
       NewsletterSliceDefaultPrimary,
       NewsletterSliceVariation,
