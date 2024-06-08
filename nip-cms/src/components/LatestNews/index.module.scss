@@ -4,13 +4,14 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    padding: 84px 94px;
+
 
     .contentContainer {
         display: flex;
         max-width: 1440px;
         width: 100%;
         flex-direction: column;
-        padding: 84px 94px;
         gap: 38px;
 
         .titleContainer {
