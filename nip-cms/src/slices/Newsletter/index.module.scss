@@ -6,7 +6,9 @@
     height: 652px;
     justify-content: center;
     padding: 0 94px;
-    background-position: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 
     .contentContainer {
         width: 100%;
