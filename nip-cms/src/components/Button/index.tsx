@@ -1,5 +1,6 @@
-import { KeyTextField } from "@prismicio/client";
+import { KeyTextField, LinkField } from "@prismicio/client";
 import styles from "./index.module.scss";
+import { PrismicNextLink } from "@prismicio/next";
 
 interface NiPButtonProps {
   variant?:
@@ -12,12 +13,14 @@ interface NiPButtonProps {
     | undefined;
   onClick?: () => void;
   children: React.ReactNode;
+  link?: LinkField;
 }
 
 const NiPButton = ({
   variant = "primary",
   onClick,
   children,
+  link,
 }: NiPButtonProps) => {
   const getColor = () => {
     switch (variant) {
@@ -37,11 +40,16 @@ const NiPButton = ({
         return styles.primary;
     }
   };
-  return (
+
+  const button = (
     <button onClick={onClick} className={`${styles.button} ${getColor()}`}>
       {children}
     </button>
   );
+  if (link) {
+    return <PrismicNextLink field={link}>{button}</PrismicNextLink>;
+  }
+  return button;
 };
 
 export default NiPButton;

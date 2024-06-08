@@ -4,7 +4,297 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = HomeHeroSlice;
+/**
+ * Content for Clanak documents
+ */
+interface ClanakDocumentData {
+  /**
+   * Istaknuta slika field in *Clanak*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: clanak.istaknuta_slika
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  istaknuta_slika: prismic.ImageField<never>;
+
+  /**
+   * Naslov field in *Clanak*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: clanak.naslov
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  naslov: prismic.TitleField;
+
+  /**
+   * Tekst field in *Clanak*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: clanak.tekst
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tekst: prismic.RichTextField;
+}
+
+/**
+ * Clanak document from Prismic
+ *
+ * - **API ID**: `clanak`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ClanakDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<ClanakDocumentData>, "clanak", Lang>;
+
+/**
+ * Item in *Footer → Linkovi na mreze*
+ */
+export interface FooterDocumentDataLinkoviNaMrezeItem {
+  /**
+   * Ikona field in *Footer → Linkovi na mreze*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.linkovi_na_mreze[].ikona
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  ikona: prismic.ImageField<never>;
+
+  /**
+   * Link field in *Footer → Linkovi na mreze*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.linkovi_na_mreze[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Item in *Footer → Navigacija*
+ */
+export interface FooterDocumentDataNavigacijaItem {
+  /**
+   * Link field in *Footer → Navigacija*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.navigacija[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Title field in *Footer → Navigacija*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.navigacija[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Footer → Dokumenti*
+ */
+export interface FooterDocumentDataDokumentiItem {
+  /**
+   * Link field in *Footer → Dokumenti*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.dokumenti[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Title field in *Footer → Dokumenti*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.dokumenti[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Logo field in *Footer*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Adresa field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.adresa
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  adresa: prismic.KeyTextField;
+
+  /**
+   * Telefon field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.telefon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  telefon: prismic.KeyTextField;
+
+  /**
+   * Email field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * Button 1 text field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.button_1_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_1_text: prismic.KeyTextField;
+
+  /**
+   * Button 1 link field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.button_1_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_1_link: prismic.LinkField;
+
+  /**
+   * Button 2 text field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.button_2_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_2_text: prismic.KeyTextField;
+
+  /**
+   * Button 2 link field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.button_2_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_2_link: prismic.LinkField;
+
+  /**
+   * Linkovi na mreze field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.linkovi_na_mreze[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  linkovi_na_mreze: prismic.GroupField<
+    Simplify<FooterDocumentDataLinkoviNaMrezeItem>
+  >;
+
+  /**
+   * Navigacija field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.navigacija[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigacija: prismic.GroupField<Simplify<FooterDocumentDataNavigacijaItem>>;
+
+  /**
+   * Dokumenti field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.dokumenti[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  dokumenti: prismic.GroupField<Simplify<FooterDocumentDataDokumentiItem>>;
+
+  /**
+   * Newsletter title field in *Footer*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.newsletter_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  newsletter_title: prismic.TitleField;
+
+  /**
+   * Newsletter button text field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.newsletter_button_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  newsletter_button_text: prismic.KeyTextField;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
+
+type HomepageDocumentDataSlicesSlice =
+  | CitatSlice
+  | NewsletterSlice
+  | HomeHeroSlice;
 
 /**
  * Content for Homepage documents
@@ -20,6 +310,72 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.TitleField;
+
+  /**
+   * Novosti naslov field in *Homepage*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.novosti_naslov
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  novosti_naslov: prismic.TitleField;
+
+  /**
+   * Novosti podnaslov field in *Homepage*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.novosti_podnaslov
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  novosti_podnaslov: prismic.RichTextField;
+
+  /**
+   * Novosti dugme tekst field in *Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.novosti_dugme_tekst
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  novosti_dugme_tekst: prismic.KeyTextField;
+
+  /**
+   * Nasi ljudi naslov field in *Homepage*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.nasi_ljudi_naslov
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  nasi_ljudi_naslov: prismic.TitleField;
+
+  /**
+   * Nasi ljudi podnaslov field in *Homepage*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.nasi_ljudi_podnaslov
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  nasi_ljudi_podnaslov: prismic.RichTextField;
+
+  /**
+   * Nasi ljudi dugme tekst field in *Homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.nasi_ljudi_dugme_tekst
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  nasi_ljudi_dugme_tekst: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Homepage*
@@ -77,6 +433,49 @@ export type HomepageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<
     Simplify<HomepageDocumentData>,
     "homepage",
+    Lang
+  >;
+
+/**
+ * Content for Nasi ljudi documents
+ */
+interface NasiLjudiDocumentData {
+  /**
+   * Ime Prezime field in *Nasi ljudi*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.ime_prezime
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  ime_prezime: prismic.TitleField;
+
+  /**
+   * Pozicija field in *Nasi ljudi*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.pozicija
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  pozicija: prismic.RichTextField;
+}
+
+/**
+ * Nasi ljudi document from Prismic
+ *
+ * - **API ID**: `nasi_ljudi`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NasiLjudiDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NasiLjudiDocumentData>,
+    "nasi_ljudi",
     Lang
   >;
 
@@ -269,10 +668,85 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 export type AllDocumentTypes =
+  | ClanakDocument
+  | FooterDocument
   | HomepageDocument
+  | NasiLjudiDocument
   | NavbarDocument
   | NavbarSubmenuDocument
   | PageDocument;
+
+/**
+ * Primary content in *Citat → Primary*
+ */
+export interface CitatSliceDefaultPrimary {
+  /**
+   * Citat field in *Citat → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: citat.primary.citat
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  citat: prismic.RichTextField;
+
+  /**
+   * Ime Prezime field in *Citat → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: citat.primary.ime_prezime
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  ime_prezime: prismic.RichTextField;
+
+  /**
+   * Pozicija field in *Citat → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: citat.primary.pozicija
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  pozicija: prismic.RichTextField;
+
+  /**
+   * Slika field in *Citat → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: citat.primary.slika
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  slika: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Citat Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CitatSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CitatSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Citat*
+ */
+type CitatSliceVariation = CitatSliceDefault;
+
+/**
+ * Citat Shared Slice
+ *
+ * - **API ID**: `citat`
+ * - **Description**: Citat
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CitatSlice = prismic.SharedSlice<"citat", CitatSliceVariation>;
 
 /**
  * Primary content in *HomeHero → Primary*
@@ -425,6 +899,71 @@ export type HomeHeroSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Newsletter → Primary*
+ */
+export interface NewsletterSliceDefaultPrimary {
+  /**
+   * Background image field in *Newsletter → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *Newsletter → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Subtitle field in *Newsletter → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Newsletter Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NewsletterSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Newsletter*
+ */
+type NewsletterSliceVariation = NewsletterSliceDefault;
+
+/**
+ * Newsletter Shared Slice
+ *
+ * - **API ID**: `newsletter`
+ * - **Description**: Newsletter
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsletterSlice = prismic.SharedSlice<
+  "newsletter",
+  NewsletterSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -479,9 +1018,18 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ClanakDocument,
+      ClanakDocumentData,
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataLinkoviNaMrezeItem,
+      FooterDocumentDataNavigacijaItem,
+      FooterDocumentDataDokumentiItem,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      NasiLjudiDocument,
+      NasiLjudiDocumentData,
       NavbarDocument,
       NavbarDocumentData,
       NavbarDocumentDataMenusItem,
@@ -491,11 +1039,19 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CitatSlice,
+      CitatSliceDefaultPrimary,
+      CitatSliceVariation,
+      CitatSliceDefault,
       HomeHeroSlice,
       HomeHeroSliceDefaultPrimary,
       HomeHeroSliceDefaultItem,
       HomeHeroSliceVariation,
       HomeHeroSliceDefault,
+      NewsletterSlice,
+      NewsletterSliceDefaultPrimary,
+      NewsletterSliceVariation,
+      NewsletterSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

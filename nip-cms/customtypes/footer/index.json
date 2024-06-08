@@ -1,0 +1,166 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "adresa": {
+        "type": "Text",
+        "config": {
+          "label": "Adresa",
+          "placeholder": ""
+        }
+      },
+      "telefon": {
+        "type": "Text",
+        "config": {
+          "label": "Telefon",
+          "placeholder": ""
+        }
+      },
+      "email": {
+        "type": "Text",
+        "config": {
+          "label": "Email",
+          "placeholder": ""
+        }
+      },
+      "button_1_text": {
+        "type": "Text",
+        "config": {
+          "label": "Button 1 text",
+          "placeholder": ""
+        }
+      },
+      "button_1_link": {
+        "type": "Link",
+        "config": {
+          "label": "Button 1 link",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "button_2_text": {
+        "type": "Text",
+        "config": {
+          "label": "Button 2 text",
+          "placeholder": ""
+        }
+      },
+      "button_2_link": {
+        "type": "Link",
+        "config": {
+          "label": "Button 2 link",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "linkovi_na_mreze": {
+        "type": "Group",
+        "config": {
+          "label": "Linkovi na mreze",
+          "repeat": true,
+          "fields": {
+            "ikona": {
+              "type": "Image",
+              "config": {
+                "label": "Ikona",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "navigacija": {
+        "type": "Group",
+        "config": {
+          "label": "Navigacija",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            },
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "dokumenti": {
+        "type": "Group",
+        "config": {
+          "label": "Dokumenti",
+          "repeat": true,
+          "fields": {
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            },
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "newsletter_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Newsletter title",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "single": "heading3"
+        }
+      },
+      "newsletter_button_text": {
+        "type": "Text",
+        "config": {
+          "label": "Newsletter button text",
+          "placeholder": ""
+        }
+      },
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

@@ -50,10 +50,16 @@ const HomeHero = ({ slice }: HomeHeroProps): JSX.Element => {
             }}
           />
           <div className={styles.buttonsContainer}>
-            <NiPButton variant="tertiaryOutlined">
+            <NiPButton
+              variant="tertiaryOutlined"
+              link={slice.primary.primary_button_link}
+            >
               {slice.primary.primary_button_text}
             </NiPButton>
-            <NiPButton variant="tertiary">
+            <NiPButton
+              variant="tertiary"
+              link={slice.primary.secondary_button_link}
+            >
               {slice.primary.secondary_button_text}
             </NiPButton>
           </div>

@@ -22,10 +22,10 @@ const Navbar = ({ data }: NavbarProps) => {
           ))}
         </div>
         <div className={styles.buttonsContainer}>
-          <NiPButton variant="secondaryOutlined" onClick={() => {}}>
+          <NiPButton variant="secondaryOutlined" link={data.button_1_link}>
             {data.button_1_text as string}
           </NiPButton>
-          <NiPButton variant="primary">
+          <NiPButton variant="primary" link={data.button_2_link}>
             {data.button_2_text as string}
           </NiPButton>
         </div>

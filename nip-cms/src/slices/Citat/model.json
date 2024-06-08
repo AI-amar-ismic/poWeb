@@ -1,0 +1,54 @@
+{
+  "id": "citat",
+  "type": "SharedSlice",
+  "name": "Citat",
+  "description": "Citat",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "citat": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Citat",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "heading2"
+          }
+        },
+        "ime_prezime": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Ime Prezime",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong"
+          }
+        },
+        "pozicija": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Pozicija",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        },
+        "slika": {
+          "type": "Image",
+          "config": {
+            "label": "Slika",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

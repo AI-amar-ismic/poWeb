@@ -1,0 +1,110 @@
+@import "../../styles/variables.scss";
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: $beige;
+    padding: 66px 94px 43px;
+
+    .contentContainer {
+        display: flex;
+        max-width: 1440px;
+        width: 100%;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 50px;
+
+        .logoSection {
+            display: flex;
+            flex-direction: column;
+            width: 240px;
+            gap: 30px;
+
+            .infoSection {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                .infoContainer {
+                    display: flex;
+                    gap: 19px;
+                    align-items: center;
+
+                    .info {
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 24px;
+                        letter-spacing: 0.02em;
+                        text-align: left;
+
+                    }
+                }
+            }
+
+            .buttonSection {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .socialContainer {
+                display: flex;
+                gap: 17px;
+                align-items: center;
+            }
+        }
+
+        .rightContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: fill-available;
+            gap: 25px;
+
+            .documentsContainer {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+                width: fit-content;
+
+                &.newsletter {
+                    max-width: 330px;
+                    gap: 30px;
+                }
+
+                .title {
+                    font-size: 24px;
+                    font-weight: 700;
+                    line-height: 24px;
+                    letter-spacing: 0.02em;
+                    text-align: left;
+                }
+
+                .navContainer {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px 30px;
+                    max-height: 270px;
+                    flex-wrap: wrap;
+
+                    .navItem {
+                        display: flex;
+                        gap: 10px;
+                        align-items: center;
+
+                        .navText {
+                            font-size: 16px;
+                            font-weight: 400;
+                            line-height: 35px;
+                            letter-spacing: 0.02em;
+                            text-align: left;
+                            text-decoration: underline;
+                            color: $blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

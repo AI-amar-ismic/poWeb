@@ -22,11 +22,67 @@
           "placeholder": ""
         }
       },
+      "novosti_naslov": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Novosti naslov",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "single": "heading2"
+        }
+      },
+      "novosti_podnaslov": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Novosti podnaslov",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "multi": "paragraph"
+        }
+      },
+      "novosti_dugme_tekst": {
+        "type": "Text",
+        "config": {
+          "label": "Novosti dugme tekst",
+          "placeholder": ""
+        }
+      },
+      "nasi_ljudi_naslov": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Nasi ljudi naslov",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "single": "heading2"
+        }
+      },
+      "nasi_ljudi_podnaslov": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Nasi ljudi podnaslov",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "single": "paragraph"
+        }
+      },
+      "nasi_ljudi_dugme_tekst": {
+        "type": "Text",
+        "config": {
+          "label": "Nasi ljudi dugme tekst",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "citat": {
+              "type": "SharedSlice"
+            },
+            "newsletter": {
+              "type": "SharedSlice"
+            },
             "home_hero": {
               "type": "SharedSlice"
             }

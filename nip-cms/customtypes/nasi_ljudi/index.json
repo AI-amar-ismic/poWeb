@@ -1,0 +1,35 @@
+{
+  "format": "custom",
+  "id": "nasi_ljudi",
+  "label": "Nasi ljudi",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "ime_prezime": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Ime Prezime",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "single": "heading3"
+        }
+      },
+      "pozicija": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Pozicija",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "multi": "paragraph"
+        }
+      }
+    }
+  }
+}

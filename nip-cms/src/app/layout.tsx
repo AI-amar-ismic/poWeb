@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { Poppins } from "next/font/google";
 import "../styles/reset.css";
 import styles from "./layout.module.scss";
+import Footer from "@/components/Footer";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -19,12 +20,16 @@ export default async function RootLayout({
 }>) {
   const client = createClient();
   const navbar = await client.getByUID("navbar", "navbar");
+  const footer = await client.getByUID("footer", "footer");
   const data = navbar.data;
+  const footerData = footer.data;
+
   return (
     <html lang="en" className={font.className}>
       <body className={styles.body}>
         <Navbar data={navbar.data} />
         {children}
+        <Footer data={footerData} />
       </body>
       <SpeedInsights />
       <PrismicPreview repositoryName={repositoryName} />
