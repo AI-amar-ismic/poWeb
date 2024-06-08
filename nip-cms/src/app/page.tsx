@@ -80,6 +80,18 @@ export default async function Index() {
             }
           }
         }
+        ...on citat {
+          variation {
+            ...on default {
+              primary {
+                ...primaryFields
+              }
+              items {
+                ...itemsFields
+              }
+            }
+          }
+        }
       }
     }
    }`,
