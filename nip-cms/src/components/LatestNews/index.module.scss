@@ -1,0 +1,55 @@
+@import '../../styles/variables.scss';
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .contentContainer {
+        display: flex;
+        max-width: 1440px;
+        width: 100%;
+        flex-direction: column;
+        padding: 84px 94px;
+        gap: 38px;
+
+        .titleContainer {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            .textContainer {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 17px;
+                max-width: 560px;
+
+                .title {
+                    font-size: 40px;
+                    font-weight: 700;
+                    line-height: 24px;
+                    letter-spacing: 0.02em;
+                    text-align: left;
+                    color: $blue;
+                }
+
+                .subtitle {
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 24px;
+                    letter-spacing: 0.02em;
+                    text-align: left;
+                    color: $blue;
+                }
+            }
+        }
+
+        .newsContainer {
+            display: flex;
+            gap: 25px;
+            justify-content: space-between;
+        }
+    }
+}

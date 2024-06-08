@@ -47,6 +47,11 @@
 						}
 					}
 				]
+			},
+			"button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "fix",
+				"type": "Text"
 			}
 		},
 		"items": []

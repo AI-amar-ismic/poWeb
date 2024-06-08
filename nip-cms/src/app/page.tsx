@@ -5,6 +5,9 @@ import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { HomepageDocumentDataSlicesSlice } from "../../prismicio-types";
+import LatestNews from "@/components/LatestNews";
+import { Ordering } from "@prismicio/client";
 
 // This component renders your homepage.
 //
@@ -31,6 +34,20 @@ export default async function Index() {
   //
   const client = createClient();
   const home = await client.getByUID("homepage", "homepage");
+  const heroSlice = home.data.slices.slice(0, 1);
+  const newsLetterSlice = home.data.slices.slice(1, 2);
+  const latestNews = await client.getAllByType("clanak", { limit: 3 });
 
-  return <SliceZone slices={home.data.slices} components={components} />;
+  return (
+    <>
+      <SliceZone slices={heroSlice} components={components} />
+      <LatestNews
+        title={home.data.novosti_naslov}
+        subtitle={home.data.novosti_podnaslov}
+        data={latestNews}
+        buttonText={home.data.novosti_dugme_tekst as string}
+      />
+      <SliceZone slices={newsLetterSlice} components={components} />
+    </>
+  );
 }
