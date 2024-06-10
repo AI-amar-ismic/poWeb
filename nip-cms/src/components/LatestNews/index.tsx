@@ -1,9 +1,11 @@
+"use client";
 import { PrismicRichText } from "@prismicio/react";
 import styles from "./index.module.scss";
 import { ClanakDocument } from "../../../prismicio-types";
 import { RichTextField, TitleField } from "@prismicio/client";
 import NiPButton from "../Button";
 import NewsCard from "../NewsCard";
+import { useEffect, useState } from "react";
 
 interface LatestNewsProps {
   data: ClanakDocument[];
@@ -13,6 +15,17 @@ interface LatestNewsProps {
 }
 
 const LatestNews = ({ data, title, subtitle, buttonText }: LatestNewsProps) => {
+  const [screenWidth, setScreenWidth] = useState<number>(0);
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.contentContainer}>
@@ -38,9 +51,11 @@ const LatestNews = ({ data, title, subtitle, buttonText }: LatestNewsProps) => {
           <NiPButton variant="primaryOutlined">{buttonText}</NiPButton>
         </div>
         <div className={styles.newsContainer}>
-          {data.map((news, index) => (
-            <NewsCard key={index} news={news} />
-          ))}
+          {screenWidth < 1280
+            ? data
+                .slice(0, 2)
+                ?.map((news, index) => <NewsCard key={index} news={news} />)
+            : data.map((news, index) => <NewsCard key={index} news={news} />)}
         </div>
       </div>
     </div>
