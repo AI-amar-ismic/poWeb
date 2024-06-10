@@ -7,6 +7,8 @@
     // padding: 164px 94px;
     position: relative;
     height: 623px;
+    background-position: right;
+
 
     .quoteContainer {
         display: flex;
@@ -19,7 +21,12 @@
         height: 110%;
         border-radius: 28% 15% 51% 49% / 0% 0% 100% 0%;
         justify-content: center;
-        align-items: center;
+        padding: 0 0 0 calc((100vw - 1440px) / 2);
+
+        @media only screen and (max-width: 1628px) {
+            padding: 0 0 0 94px;
+            width: 55%;
+        }
 
         .quoteContentContainer {
             gap: 27px;
