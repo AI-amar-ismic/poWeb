@@ -9,6 +9,16 @@
     height: 623px;
     background-position: right;
 
+    @media only screen and (max-width: 1024px) {
+        flex-direction: column;
+        height: 914px;
+        padding-top: 501px;
+        box-sizing: border-box;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: contain;
+    }
+
 
     .quoteContainer {
         display: flex;
@@ -31,12 +41,24 @@
             width: 55%;
         }
 
+        @media only screen and (max-width: 1024px) {
+            width: 100%;
+            height: 501px;
+            border-radius: 0;
+            padding: 0;
+            align-items: center;
+        }
+
         .quoteContentContainer {
             gap: 27px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             max-width: 576px;
+
+            @media only screen and (max-width: 1024px) {
+                max-width: 520px;
+            }
 
             .quote {
                 font-size: 40px;

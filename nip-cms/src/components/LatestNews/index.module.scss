@@ -6,7 +6,7 @@
     width: 100%;
     padding: 84px 94px;
 
-    @media only screen and (max-width: 1280px) {
+    @media only screen and (max-width: 1024px) {
         padding: 85px 57px;
     }
 
@@ -31,7 +31,7 @@
                 gap: 17px;
                 max-width: 560px;
 
-                @media only screen and (max-width: 1280px) {
+                @media only screen and (max-width: 1024px) {
                     max-width: 472px;
                 }
 
@@ -60,7 +60,7 @@
             gap: 25px;
             justify-content: space-between;
 
-            @media only screen and (max-width: 1280px) {
+            @media only screen and (max-width: 1024px) {
                 .link:nth-child(3) {
                     display: none;
                 }

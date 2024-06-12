@@ -56,56 +56,52 @@ const Footer = ({ data }: FooterProps) => {
             ))}
           </div>
         </div>
-        <div className={styles.rightContainer}>
-          <div className={styles.documentsContainer}>
-            <h3 className={styles.title}>Navigacija</h3>
-            <div className={styles.navContainer}>
-              {data.navigacija.map((menu, i) => (
-                <div key={`${menu.title}-${i}`} className={styles.navItem}>
-                  <PolygonIcon />
-                  <PrismicNextLink field={menu.link}>
-                    <p className={styles.navText}>{menu.title}</p>
-                  </PrismicNextLink>
-                </div>
-              ))}
-            </div>
+        <div className={`${styles.documentsContainer} ${styles.navigacija}`}>
+          <h3 className={styles.title}>Navigacija</h3>
+          <div className={styles.navContainer}>
+            {data.navigacija.map((menu, i) => (
+              <div key={`${menu.title}-${i}`} className={styles.navItem}>
+                <PolygonIcon />
+                <PrismicNextLink field={menu.link}>
+                  <p className={styles.navText}>{menu.title}</p>
+                </PrismicNextLink>
+              </div>
+            ))}
           </div>
-          <div className={styles.documentsContainer}>
-            <h3 className={styles.title}>Dokumenti</h3>
-            <div className={styles.navContainer}>
-              {data.dokumenti.map((menu, i) => (
-                <div key={`${menu.title}-${i}`} className={styles.navItem}>
-                  <PolygonIcon />
-                  <PrismicNextLink field={menu.link}>
-                    <p className={styles.navText}>{menu.title}</p>
-                  </PrismicNextLink>
-                </div>
-              ))}
-            </div>
+        </div>
+        <div className={`${styles.documentsContainer} ${styles.dokumenti}`}>
+          <h3 className={styles.title}>Dokumenti</h3>
+          <div className={styles.navContainer}>
+            {data.dokumenti.map((menu, i) => (
+              <div key={`${menu.title}-${i}`} className={styles.navItem}>
+                <PolygonIcon />
+                <PrismicNextLink field={menu.link}>
+                  <p className={styles.navText}>{menu.title}</p>
+                </PrismicNextLink>
+              </div>
+            ))}
           </div>
-          <div className={`${styles.documentsContainer} ${styles.newsletter}`}>
-            <PrismicRichText
-              field={data.newsletter_title}
-              components={{
-                heading3: ({ children }) => {
-                  return <h3 className={styles.title}>{children}</h3>;
-                },
-              }}
-            />
-            <Input
-              value={name}
-              onChange={(value) => setName(value)}
-              placeholder="Ime i Prezime"
-            />
-            <Input
-              value={email}
-              onChange={(value) => setName(email)}
-              placeholder="E-mail"
-            />
-            <NiPButton variant="primary">
-              {data.newsletter_button_text}
-            </NiPButton>
-          </div>
+        </div>
+        <div className={`${styles.documentsContainer} ${styles.newsletter}`}>
+          <PrismicRichText
+            field={data.newsletter_title}
+            components={{
+              heading3: ({ children }) => {
+                return <h3 className={styles.title}>{children}</h3>;
+              },
+            }}
+          />
+          <Input
+            value={name}
+            onChange={(value) => setName(value)}
+            placeholder="Ime i Prezime"
+          />
+          <Input
+            value={email}
+            onChange={(value) => setName(email)}
+            placeholder="E-mail"
+          />
+          <NiPButton variant="primary">{data.newsletter_button_text}</NiPButton>
         </div>
       </div>
     </div>
