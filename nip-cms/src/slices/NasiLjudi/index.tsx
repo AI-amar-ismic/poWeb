@@ -53,15 +53,11 @@ const NasiLjudi = ({ slice }: NasiLjudiProps): JSX.Element => {
           </NiPButton>
         </div>
         <div className={styles.peopleContainer}>
-          {screenWidth < 1024
-            ? slice.items
-                .slice(0, 3)
-                .map((person, index) => (
-                  <PersonCard person={person} key={index} />
-                ))
-            : slice.items.map((person, index) => (
-                <PersonCard person={person} key={index} />
-              ))}
+          {slice.items.map((person, index) => (
+            <div key={index}>
+              <PersonCard person={person} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

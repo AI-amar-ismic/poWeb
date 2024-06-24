@@ -51,11 +51,11 @@ const LatestNews = ({ data, title, subtitle, buttonText }: LatestNewsProps) => {
           <NiPButton variant="primaryOutlined">{buttonText}</NiPButton>
         </div>
         <div className={styles.newsContainer}>
-          {screenWidth < 1024
-            ? data
-                .slice(0, 2)
-                ?.map((news, index) => <NewsCard key={index} news={news} />)
-            : data.map((news, index) => <NewsCard key={index} news={news} />)}
+          {data.map((news, index) => (
+            <div key={index}>
+              <NewsCard news={news} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -18,6 +18,7 @@ const NewsCard = ({ news }: NewsCardProps) => {
           width={364}
           height={277}
           className={styles.image}
+          quality={100}
         />
         <PrismicRichText
           field={news.data.naslov}
