@@ -20,8 +20,10 @@
   }
 
   @media only screen and (max-width: 850px) {
-    background-size: 210%;
-    background-position: bottom right;
+    background-position: bottom 0 right -50px;
+    background-size: 250%;
+    padding-top: 629px;
+    height: 1087px;
   }
 
   .quoteContainer {
@@ -55,7 +57,7 @@
 
     @media only screen and (max-width: 850px) {
       padding: 40px 20px;
-      height: auto;
+      height: 629px;
     }
 
     .quoteContentContainer {
