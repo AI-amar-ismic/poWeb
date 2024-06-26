@@ -50,12 +50,15 @@ const LatestNews = ({ data, title, subtitle, buttonText }: LatestNewsProps) => {
           </div>
           <NiPButton variant="primaryOutlined">{buttonText}</NiPButton>
         </div>
-        <div className={styles.newsContainer}>
-          {data.map((news, index) => (
-            <div key={index}>
-              <NewsCard news={news} />
-            </div>
-          ))}
+        <div className={styles.newsTopContainer}>
+          <div className={styles.newsContainer}>
+            {data.map((news, index) => (
+              <div key={index}>
+                <NewsCard news={news} />
+              </div>
+            ))}
+          </div>
+          <NiPButton variant="primaryOutlined">{buttonText}</NiPButton>
         </div>
       </div>
     </div>

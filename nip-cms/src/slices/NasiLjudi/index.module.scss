@@ -1,65 +1,100 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .container {
-    display: flex;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 94px 94px 137px;
+
+  @media only screen and (max-width: 1024px) {
+    padding: 85px 57px 57px 80px;
+  }
+
+  @media only screen and (max-width: 850px) {
+    padding: 42px 20px;
+  }
+
+  .contentContainer {
     width: 100%;
-    justify-content: center;
-    padding: 94px 94px 137px;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
 
-    @media only screen and (max-width: 1024px) {
-        padding: 85px 57px 57px 80px;
-    }
+    .titleContainer {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-end;
 
-    .contentContainer {
-        width: 100%;
-        max-width: 1440px;
+      @media only screen and (max-width: 850px) {
+        flex-direction: column;
+
+        button {
+          display: none;
+        }
+      }
+
+      .textContainer {
         display: flex;
         flex-direction: column;
-        gap: 41px;
+        align-items: flex-start;
+        gap: 17px;
+        max-width: 560px;
 
-        .titleContainer {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            align-items: flex-end;
+        .title {
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 24px;
+          letter-spacing: 0.02em;
+          text-align: left;
+          color: $blue;
 
-            .textContainer {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 17px;
-                max-width: 560px;
-
-                .title {
-                    font-size: 40px;
-                    font-weight: 700;
-                    line-height: 24px;
-                    letter-spacing: 0.02em;
-                    text-align: left;
-                    color: $blue;
-                }
-
-                .subtitle {
-                    font-size: 16px;
-                    font-weight: 400;
-                    line-height: 24px;
-                    letter-spacing: 0.02em;
-                    text-align: left;
-                    color: $blue;
-                }
-            }
+          @media only screen and (max-width: 850px) {
+            text-wrap: nowrap;
+          }
         }
 
-        .peopleContainer {
-            display: flex;
-            gap: 17px;
-            justify-content: space-between;
-
-            @media only screen and (max-width: 1024px) {
-                div:nth-of-type(4) {
-                    display: none;
-                }
-            }
+        .subtitle {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0.02em;
+          text-align: left;
+          color: $blue;
         }
+      }
     }
+
+    .peopleTopContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 33px;
+
+      button {
+        display: none;
+        @media only screen and (max-width: 850px) {
+          display: block;
+        }
+      }
+
+      .peopleContainer {
+        display: flex;
+        gap: 17px;
+        justify-content: space-between;
+
+        @media only screen and (max-width: 1024px) {
+          div:nth-of-type(4) {
+            display: none;
+          }
+        }
+
+        @media only screen and (max-width: 850px) {
+          flex-direction: column;
+          align-items: center;
+          gap: 40px;
+        }
+      }
+    }
+  }
 }

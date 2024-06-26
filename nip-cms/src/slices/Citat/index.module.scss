@@ -1,98 +1,105 @@
 @import "../../styles//variables.scss";
 
 .container {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  // padding: 164px 94px;
+  position: relative;
+  height: 623px;
+  background-position: right;
+
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+    height: 914px;
+    padding-top: 501px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+  }
+
+  @media only screen and (max-width: 850px) {
+    background-size: 210%;
+    background-position: bottom right;
+  }
+
+  .quoteContainer {
     display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 65%;
+    background-color: $beige;
+    height: 110%;
+    border-radius: 28% 15% 51% 49% / 0% 0% 100% 0%;
     justify-content: center;
-    // padding: 164px 94px;
-    position: relative;
-    height: 623px;
-    background-position: right;
+    padding: 0 0 0 calc((100vw - 1440px) / 2);
+
+    @media only screen and (max-width: 1628px) {
+      padding: 0 0 0 94px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+      width: 55%;
+    }
 
     @media only screen and (max-width: 1024px) {
-        flex-direction: column;
-        height: 914px;
-        padding-top: 501px;
-        box-sizing: border-box;
-        background-repeat: no-repeat;
-        background-position: bottom;
-        background-size: contain;
+      width: 100%;
+      height: 501px;
+      border-radius: 0;
+      padding: 0;
+      align-items: center;
     }
 
+    @media only screen and (max-width: 850px) {
+      padding: 40px 20px;
+      height: auto;
+    }
 
-    .quoteContainer {
+    .quoteContentContainer {
+      gap: 27px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 576px;
+
+      @media only screen and (max-width: 1024px) {
+        max-width: 520px;
+      }
+
+      .quote {
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 50px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        color: $blue;
+      }
+
+      .nameContainer {
         display: flex;
-        position: absolute;
         flex-direction: column;
-        top: 0;
-        left: 0;
-        width: 65%;
-        background-color: $beige;
-        height: 110%;
-        border-radius: 28% 15% 51% 49% / 0% 0% 100% 0%;
-        justify-content: center;
-        padding: 0 0 0 calc((100vw - 1440px) / 2);
 
-        @media only screen and (max-width: 1628px) {
-            padding: 0 0 0 94px;
+        .name {
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 24px;
+          letter-spacing: 0.02em;
+          text-align: left;
+          color: $blue;
         }
 
-        @media only screen and (min-width: 1440px) {
-            width: 55%;
+        .position {
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0.02em;
+          text-align: left;
+          color: $blue;
         }
-
-        @media only screen and (max-width: 1024px) {
-            width: 100%;
-            height: 501px;
-            border-radius: 0;
-            padding: 0;
-            align-items: center;
-        }
-
-        .quoteContentContainer {
-            gap: 27px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            max-width: 576px;
-
-            @media only screen and (max-width: 1024px) {
-                max-width: 520px;
-            }
-
-            .quote {
-                font-size: 40px;
-                font-weight: 700;
-                line-height: 50px;
-                letter-spacing: 0.02em;
-                text-align: left;
-                color: $blue;
-
-            }
-
-            .nameContainer {
-                display: flex;
-                flex-direction: column;
-
-                .name {
-                    font-size: 24px;
-                    font-weight: 600;
-                    line-height: 24px;
-                    letter-spacing: 0.02em;
-                    text-align: left;
-                    color: $blue;
-                }
-
-                .position {
-                    font-size: 24px;
-                    font-weight: 400;
-                    line-height: 24px;
-                    letter-spacing: 0.02em;
-                    text-align: left;
-                    color: $blue;
-                }
-            }
-        }
+      }
     }
-
+  }
 }

@@ -1,277 +1,231 @@
 @import "../../styles/variables.scss";
 
 .topContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 94px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 94px;
+  width: 100%;
+  height: 580px;
+
+  @media only screen and (max-width: 1024px) {
+    padding: 50px;
+    align-items: flex-end;
+    background-position: center;
+  }
+
+  @media only screen and (max-width: 850px) {
+    padding: 25px;
+  }
+
+  .imageContainer {
     width: 100%;
-    height: 580px;
+    display: flex;
+    justify-content: center;
 
-    @media only screen and (max-width: 1024px) {
-        padding: 50px;
-        align-items: flex-end;
-        background-position: center;
-    }
+    .contentContainer {
+      max-width: 1440px;
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
 
-    @media only screen and (max-width: 850px) {
-        padding: 25px;
-    }
+      .title {
+        color: white;
+        width: 720px;
+        font-size: 80px;
+        font-weight: 700;
+        line-height: 73px;
+        letter-spacing: 0.02em;
+        text-align: right;
 
-
-    .imageContainer {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-
-        .contentContainer {
-            max-width: 1440px;
-            display: flex;
-            align-items: flex-end;
-            flex-direction: column;
-            gap: 16px;
-            width: 100%;
-
-            .title {
-                color: white;
-                width: 720px;
-                font-size: 80px;
-                font-weight: 700;
-                line-height: 73px;
-                letter-spacing: 0.02em;
-                text-align: right;
-
-                @media only screen and (max-width: 1024px) {
-                    width: 100%;
-                }
-
-                @media only screen and (max-width: 850px) {
-                    width: 100%;
-                    font-size: 40px;
-                    line-height: 39.34px;
-                    width: 100%;
-                }
-
-            }
-
-            .subtitle {
-                font-size: 16px;
-                font-weight: 500;
-                line-height: 24px;
-                letter-spacing: 0.02em;
-                text-align: right;
-                color: white;
-                width: 603px;
-
-                @media only screen and (max-width: 850px) {
-                    width: 100%;
-                    font-size: 14px;
-                    line-height: 21px;
-                    width: 100%;
-                }
-            }
-
-            .buttonsContainer {
-                display: flex;
-                gap: 40px;
-            }
+        @media only screen and (max-width: 1024px) {
+          width: 100%;
         }
+
+        @media only screen and (max-width: 850px) {
+          width: 100%;
+          font-size: 40px;
+          line-height: 39.34px;
+          width: 100%;
+        }
+      }
+
+      .subtitle {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-align: right;
+        color: white;
+        width: 603px;
+
+        @media only screen and (max-width: 850px) {
+          width: 100%;
+          font-size: 14px;
+          line-height: 21px;
+          width: 100%;
+        }
+      }
+
+      .buttonsContainer {
+        display: flex;
+        gap: 40px;
+      }
     }
+  }
 }
 
 .bottomContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 94px 0 94px;
+  width: 100%;
+  background-color: $pale-gold;
+  position: relative;
+  height: 403px;
+
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+    padding: 0;
+    height: auto;
+  }
+
+  .calloutContainer {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 110px 94px 0 94px;
     width: 100%;
-    background-color: $pale-gold;
-    position: relative;
-    height: 403px;
+    height: 100%;
+    gap: 19px;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 1440px;
 
     @media only screen and (max-width: 1024px) {
-        flex-direction: column;
+      svg {
+        align-self: center;
+        rotate: 90deg;
+        margin: 25px 0 70px 0;
+      }
+    }
+
+    .callout {
+      font-size: 55px;
+      font-weight: 800;
+      line-height: 51px;
+      letter-spacing: 0.02em;
+      text-align: left;
+      width: 260px;
+      color: $blue;
+
+      @media only screen and (max-width: 1024px) {
+        align-self: center;
+        margin-top: 80px;
+        text-align: center;
+      }
+    }
+
+    .blueSection {
+      position: absolute;
+      display: flex;
+      padding: 78px 92px 78px 68px;
+      gap: 10px;
+      bottom: 0px;
+      right: 0;
+      left: 30%;
+      background-color: $dark-blue;
+      height: 463px;
+
+      @media only screen and (max-width: 1024px) {
+        position: initial;
+        padding: 78px 57px 78px 57px;
+        height: auto;
+      }
+
+      @media only screen and (max-width: 850px) {
         padding: 0;
         height: auto;
-    }
-
-
-    .calloutContainer {
-        display: flex;
         width: 100%;
-        height: 100%;
-        gap: 19px;
         flex-direction: column;
-        align-items: flex-start;
-        max-width: 1440px;
+        padding: 24px 20px;
+        gap: 24px;
+      }
+
+      .blueTextContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        border-right: 1px solid white;
+        padding: 0 0 0 10px;
+        max-width: 340px;
 
         @media only screen and (max-width: 1024px) {
-            svg {
-                align-self: center;
-                rotate: 90deg;
-                margin: 25px 0 70px 0;
-            }
+          padding: 0 23px;
+          // max-width: 208px;
         }
 
-        .callout {
-            font-size: 55px;
-            font-weight: 800;
-            line-height: 51px;
-            letter-spacing: 0.02em;
-            text-align: left;
-            width: 260px;
-            color: $blue;
-
-            @media only screen and (max-width: 1024px) {
-                align-self: center;
-                margin-top: 80px;
-                text-align: center;
-            }
+        @media only screen and (max-width: 850px) {
+          border-right: none;
+          border-bottom: 1px solid white;
+          padding: 24px 0;
+          max-width: 100%;
         }
 
-        .blueSection {
-            position: absolute;
-            display: flex;
-            padding: 78px 92px 78px 68px;
-            gap: 10px;
-            bottom: 0px;
-            right: 0;
-            left: 30%;
-            background-color: $dark-blue;
-            height: 463px;
-
-            @media only screen and (max-width: 1024px) {
-                position: initial;
-                padding: 78px 57px 78px 57px;
-                height: auto;
-            }
-
-            @media only screen and (max-width: 850px) {
-                padding: 0;
-                height: 500px;
-                width: 100%;
-            }
-
-            .blueTextContainer {
-                display: flex;
-                flex-direction: column;
-                gap: 25px;
-                border-right: 1px solid white;
-                padding: 0 0 0 10px;
-                max-width: 340px;
-
-                @media only screen and (max-width: 1024px) {
-                    padding: 0 23px;
-                    // max-width: 208px;
-                }
-
-                @media only screen and (max-width: 850px) {
-                    display: none;
-                }
-
-                &:last-of-type {
-                    border-right: none;
-                }
-
-                .numberTitleContainer {
-                    display: flex;
-                    gap: 16px;
-                    align-items: center;
-
-                    .number {
-                        font-size: 80px;
-                        font-weight: 800;
-                        line-height: 24px;
-                        letter-spacing: 0.02em;
-                        text-align: left;
-                        color: white;
-                    }
-
-                    .title {
-                        font-size: 26px;
-                        font-weight: 600;
-                        line-height: 26px;
-                        letter-spacing: 0.02em;
-                        text-align: left;
-                        color: white;
-
-                    }
-                }
-
-                .subText {
-                    font-size: 16px;
-                    font-weight: 400;
-                    line-height: 24px;
-                    letter-spacing: 0.02em;
-                    text-align: left;
-                    color: white;
-                }
-
-            }
-
-            .carousel {
-                display: none;
-
-                .slick-list {
-                    border: 1px solid red;
-                }
-
-
-                @media only screen and (max-width: 850px) {
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                }
-
-            }
-
-
+        &:last-of-type {
+          border-right: none;
+          @media only screen and (max-width: 850px) {
+            border-bottom: none;
+          }
         }
-    }
-}
 
-.carouselItem {
-    display: flex;
-    width: 100%;
-    height: 450px;
-    justify-content: center;
-    align-items: center;
+        .numberTitleContainer {
+          display: flex;
+          gap: 16px;
+          align-items: center;
 
-
-    .numberTitleContainerCarousel {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-
-        .numberCarousel {
+          .number {
             font-size: 80px;
             font-weight: 800;
             line-height: 24px;
             letter-spacing: 0.02em;
             text-align: left;
             color: white;
-        }
+          }
 
-        .titleCarousel {
+          .title {
             font-size: 26px;
             font-weight: 600;
             line-height: 26px;
             letter-spacing: 0.02em;
             text-align: left;
             color: white;
-
+          }
         }
+
+        .subText {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0.02em;
+          text-align: left;
+          color: white;
+        }
+      }
+
+      .carousel {
+        display: none;
+
+        .slick-list {
+          border: 1px solid red;
+        }
+
+        @media only screen and (max-width: 850px) {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
-
-    .subTextCarousel {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        letter-spacing: 0.02em;
-        text-align: left;
-        color: white;
-    }
-
-
+  }
 }

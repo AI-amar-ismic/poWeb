@@ -11,7 +11,6 @@ import { url } from "inspector";
 import NiPButton from "@/components/Button";
 import { ArrowIcon } from "@/assets/icons";
 import { PrismicNextLink } from "@prismicio/next";
-import Carousel from "@/components/Carousel";
 
 /**
  * Props for `HomeHero`.
@@ -110,41 +109,6 @@ const HomeHero = ({ slice }: HomeHeroProps): JSX.Element => {
                 </PrismicNextLink>
               </div>
             ))}
-            {/* <Carousel className={styles.carousel}>
-              {slice.items.map((item, i) => (
-                <div
-                  className={styles.carouselItem}
-                  key={`${item.politike_title}-${i}`}
-                >
-                  <div className={styles.numberTitleContainerCarousel}>
-                    <h1 className={styles.numberCarousel}>{i + 1}</h1>
-                    <PrismicRichText
-                      field={item.politike_title}
-                      components={{
-                        heading2: ({ children }) => {
-                          return (
-                            <h2 className={styles.titleCarousel}>{children}</h2>
-                          );
-                        },
-                      }}
-                    />
-                  </div>
-                  <PrismicRichText
-                    field={item.politike_text}
-                    components={{
-                      paragraph: ({ children }) => {
-                        return (
-                          <p className={styles.subTextCarousel}>{children}</p>
-                        );
-                      },
-                    }}
-                  />
-                  <PrismicNextLink field={item.procitaj_vise_link}>
-                    <p className={styles.subTextCarousel}>Pročitaj više</p>
-                  </PrismicNextLink>
-                </div>
-              ))}
-            </Carousel> */}
           </div>
         </div>
       </div>

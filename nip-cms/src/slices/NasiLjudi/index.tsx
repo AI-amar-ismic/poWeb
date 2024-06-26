@@ -52,12 +52,17 @@ const NasiLjudi = ({ slice }: NasiLjudiProps): JSX.Element => {
             {slice.primary.button_text}
           </NiPButton>
         </div>
-        <div className={styles.peopleContainer}>
-          {slice.items.map((person, index) => (
-            <div key={index}>
-              <PersonCard person={person} />
-            </div>
-          ))}
+        <div className={styles.peopleTopContainer}>
+          <div className={styles.peopleContainer}>
+            {slice.items.map((person, index) => (
+              <div key={index}>
+                <PersonCard person={person} />
+              </div>
+            ))}
+          </div>
+          <NiPButton variant="primaryOutlined">
+            {slice.primary.button_text}
+          </NiPButton>
         </div>
       </div>
     </div>
