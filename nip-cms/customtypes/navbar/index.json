@@ -24,22 +24,6 @@
           "thumbnails": []
         }
       },
-      "menus": {
-        "type": "Group",
-        "config": {
-          "label": "Menus",
-          "repeat": true,
-          "fields": {
-            "title": {
-              "type": "Text",
-              "config": {
-                "label": "Title",
-                "placeholder": ""
-              }
-            }
-          }
-        }
-      },
       "button_1_text": {
         "type": "Text",
         "config": {
@@ -68,6 +52,116 @@
         "config": {
           "label": "Button 2 link",
           "placeholder": "",
+          "select": null
+        }
+      },
+      "menu_1_link": {
+        "type": "Link",
+        "config": {
+          "label": "Menu 1 link",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "select": null
+        }
+      },
+      "menu_1_text": {
+        "type": "Text",
+        "config": {
+          "label": "Menu 1 text",
+          "placeholder": ""
+        }
+      },
+      "menu_2_text": {
+        "type": "Text",
+        "config": {
+          "label": "Menu 2 text",
+          "placeholder": ""
+        }
+      },
+      "menu_2_submenus": {
+        "type": "Group",
+        "config": {
+          "label": "Menu 2 submenus",
+          "repeat": true,
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "menu_3_text": {
+        "type": "Text",
+        "config": {
+          "label": "Menu 3 text",
+          "placeholder": ""
+        }
+      },
+      "menu_3_submenus": {
+        "type": "Group",
+        "config": {
+          "label": "Menu 3 submenus",
+          "repeat": true,
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "menu_4_text": {
+        "type": "Text",
+        "config": {
+          "label": "Menu 4 text",
+          "placeholder": ""
+        }
+      },
+      "menu_4_link": {
+        "type": "Link",
+        "config": {
+          "label": "Menu 4 link",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "select": null
+        }
+      },
+      "menu_5_text": {
+        "type": "Text",
+        "config": {
+          "label": "Menu 5 text",
+          "placeholder": ""
+        }
+      },
+      "menu_5_link": {
+        "type": "Link",
+        "config": {
+          "label": "Menu 5 link",
+          "placeholder": "",
+          "allowTargetBlank": false,
           "select": null
         }
       }

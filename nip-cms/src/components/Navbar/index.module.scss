@@ -1,55 +1,61 @@
 @import "../../styles/variables.scss";
 
 .container {
+  display: flex;
+  align-items: center;
+  background-color: $beige;
+  height: 100px;
+  width: auto;
+  justify-content: center;
+  padding: 0 90px;
+
+  @media only screen and (max-width: 1280px) {
+    padding: 0 57px;
+  }
+
+  .content {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    background-color: $beige;
-    height: 100px;
-    width: auto;
-    justify-content: center;
-    padding: 0 90px;
+    color: $blue;
+    width: 100%;
+    max-width: 1440px;
+    gap: 30px;
 
-    @media only screen and (max-width: 1280px) {
-        padding: 0 57px;
-    }
+    .menuItemsContainer {
+      display: flex;
+      gap: 22px;
 
+      @media only screen and (max-width: 1280px) {
+        display: none;
+      }
 
-    .content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      .menuLink {
+        text-decoration: none;
+        &:hover {
+          border-bottom: 2px solid $blue;
+        }
+      }
+
+      .menuItem {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        white-space: nowrap;
+        text-decoration: unset;
         color: $blue;
-        width: 100%;
-        max-width: 1440px;
-        gap: 30px;
-
-        .menuItemsContainer {
-            display: flex;
-            gap: 22px;
-
-            @media only screen and (max-width: 1280px) {
-                display: none;
-            }
-
-            .menuItem {
-                font-size: 14px;
-                font-weight: 500;
-                line-height: 24px;
-                letter-spacing: 0.02em;
-                text-align: left;
-                white-space: nowrap;
-            }
-
-        }
-
-        .buttonsContainer {
-            display: flex;
-            gap: 26px;
-
-            @media only screen and (max-width: 1280px) {
-                display: none;
-            }
-        }
+      }
     }
 
+    .buttonsContainer {
+      display: flex;
+      gap: 26px;
+
+      @media only screen and (max-width: 1280px) {
+        display: none;
+      }
+    }
+  }
 }

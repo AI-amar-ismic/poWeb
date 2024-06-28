@@ -459,18 +459,53 @@ export type NasiLjudiDocument<Lang extends string = string> =
   >;
 
 /**
- * Item in *Navbar → Menus*
+ * Item in *Navbar → Menu 2 submenus*
  */
-export interface NavbarDocumentDataMenusItem {
+export interface NavbarDocumentDataMenu2SubmenusItem {
   /**
-   * Title field in *Navbar → Menus*
+   * Title field in *Navbar → Menu 2 submenus*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: navbar.menus[].title
+   * - **API ID Path**: navbar.menu_2_submenus[].title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Link field in *Navbar → Menu 2 submenus*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_2_submenus[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Item in *Navbar → Menu 3 submenus*
+ */
+export interface NavbarDocumentDataMenu3SubmenusItem {
+  /**
+   * Title field in *Navbar → Menu 3 submenus*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_3_submenus[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *Navbar → Menu 3 submenus*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_3_submenus[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
 }
 
 /**
@@ -487,17 +522,6 @@ interface NavbarDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo: prismic.ImageField<never>;
-
-  /**
-   * Menus field in *Navbar*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navbar.menus[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  menus: prismic.GroupField<Simplify<NavbarDocumentDataMenusItem>>;
 
   /**
    * Button 1 text field in *Navbar*
@@ -542,6 +566,120 @@ interface NavbarDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   button_2_link: prismic.LinkField;
+
+  /**
+   * Menu 1 link field in *Navbar*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_1_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  menu_1_link: prismic.LinkField;
+
+  /**
+   * Menu 1 text field in *Navbar*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_1_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  menu_1_text: prismic.KeyTextField;
+
+  /**
+   * Menu 2 text field in *Navbar*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_2_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  menu_2_text: prismic.KeyTextField;
+
+  /**
+   * Menu 2 submenus field in *Navbar*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_2_submenus[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  menu_2_submenus: prismic.GroupField<
+    Simplify<NavbarDocumentDataMenu2SubmenusItem>
+  >;
+
+  /**
+   * Menu 3 text field in *Navbar*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_3_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  menu_3_text: prismic.KeyTextField;
+
+  /**
+   * Menu 3 submenus field in *Navbar*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_3_submenus[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  menu_3_submenus: prismic.GroupField<
+    Simplify<NavbarDocumentDataMenu3SubmenusItem>
+  >;
+
+  /**
+   * Menu 4 text field in *Navbar*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_4_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  menu_4_text: prismic.KeyTextField;
+
+  /**
+   * Menu 4 link field in *Navbar*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_4_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  menu_4_link: prismic.LinkField;
+
+  /**
+   * Menu 5 text field in *Navbar*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_5_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  menu_5_text: prismic.KeyTextField;
+
+  /**
+   * Menu 5 link field in *Navbar*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.menu_5_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  menu_5_link: prismic.LinkField;
 }
 
 /**
@@ -555,24 +693,6 @@ interface NavbarDocumentData {
  */
 export type NavbarDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<NavbarDocumentData>, "navbar", Lang>;
-
-interface NavbarSubmenuDocumentData {}
-
-/**
- * Navbar submenu document from Prismic
- *
- * - **API ID**: `navbar_submenu`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type NavbarSubmenuDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<NavbarSubmenuDocumentData>,
-    "navbar_submenu",
-    Lang
-  >;
 
 type PageDocumentDataSlicesSlice = RichTextSlice;
 
@@ -652,7 +772,6 @@ export type AllDocumentTypes =
   | HomepageDocument
   | NasiLjudiDocument
   | NavbarDocument
-  | NavbarSubmenuDocument
   | PageDocument;
 
 /**
@@ -1101,9 +1220,8 @@ declare module "@prismicio/client" {
       NasiLjudiDocumentData,
       NavbarDocument,
       NavbarDocumentData,
-      NavbarDocumentDataMenusItem,
-      NavbarSubmenuDocument,
-      NavbarSubmenuDocumentData,
+      NavbarDocumentDataMenu2SubmenusItem,
+      NavbarDocumentDataMenu3SubmenusItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,

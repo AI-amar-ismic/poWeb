@@ -1,0 +1,86 @@
+@import "../../../styles/variables.scss";
+
+@-webkit-keyframes scale-in-hor-center {
+  0% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-hor-center {
+  0% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.menuContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  padding-bottom: 2px;
+  -webkit-animation: scale-in-hor-center 0.25s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) border-bottom;
+  animation: scale-in-hor-center 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    border-bottom;
+
+  &:hover {
+    border-bottom: 2px solid $blue;
+    padding: 0;
+  }
+
+  &.border {
+    border-bottom: 2px solid $blue;
+    padding: 0;
+  }
+
+  .menuItem {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    white-space: nowrap;
+  }
+}
+
+.submenuItemContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+
+  .submenuItem {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    white-space: nowrap;
+    text-decoration: unset;
+    color: $blue;
+  }
+}
+
+.dropdownContent {
+  padding: 20px;
+  gap: 10px;
+  opacity: 0px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}

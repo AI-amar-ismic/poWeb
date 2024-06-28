@@ -85,3 +85,20 @@ export const PolygonIcon = () => {
     </svg>
   );
 };
+
+export const ChevronDownIcon = () => {
+  return (
+    <svg
+      width="9"
+      height="8"
+      viewBox="0 0 9 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.25 7.5L0.352885 0.75L8.14711 0.750001L4.25 7.5Z"
+        fill="#313131"
+      />
+    </svg>
+  );
+};
