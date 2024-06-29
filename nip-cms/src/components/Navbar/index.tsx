@@ -5,6 +5,10 @@ import styles from "./index.module.scss";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import NiPButton from "../Button";
 import Submenu from "./Submenu";
+import Link from "next/link";
+import { HamburguerIcon } from "@/assets/icons";
+import { useState } from "react";
+import HamburgerMenu from "./HamburgerMenu";
 
 interface NavbarProps {
   data: Content.NavbarDocumentData;
@@ -48,7 +52,9 @@ const Navbar = ({ data }: NavbarProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <PrismicNextImage field={navbarData.logo} />
+        <Link href="/">
+          <PrismicNextImage field={navbarData.logo} />
+        </Link>
         {renderMenus()}
         <div className={styles.buttonsContainer}>
           <NiPButton
@@ -61,6 +67,7 @@ const Navbar = ({ data }: NavbarProps) => {
             {navbarData.button_2_text as string}
           </NiPButton>
         </div>
+        <HamburgerMenu data={data} />
       </div>
     </div>
   );

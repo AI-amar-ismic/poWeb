@@ -1,3 +1,6 @@
+import { useState } from "react";
+import styles from "./icons.module.scss";
+
 export const ArrowIcon = () => {
   return (
     <svg
@@ -100,5 +103,15 @@ export const ChevronDownIcon = () => {
         fill="#313131"
       />
     </svg>
+  );
+};
+
+export const HamburguerIcon = ({ isOpen }: { isOpen: boolean }) => {
+  return (
+    <div className={`${styles.navIcon} ${isOpen ? styles.open : ""}`}>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   );
 };

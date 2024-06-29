@@ -13,6 +13,10 @@
     padding: 0 57px;
   }
 
+  @media only screen and (max-width: 850px) {
+    padding: 0 29px;
+  }
+
   .content {
     display: flex;
     justify-content: space-between;
@@ -21,6 +25,15 @@
     width: 100%;
     max-width: 1440px;
     gap: 30px;
+
+    .hamburgerContainer {
+      display: none;
+      cursor: pointer;
+
+      @media only screen and (max-width: 1280px) {
+        display: flex;
+      }
+    }
 
     .menuItemsContainer {
       display: flex;
