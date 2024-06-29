@@ -766,13 +766,90 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+type VijestiDocumentDataSlicesSlice = RichTextSlice;
+
+/**
+ * Content for Vijesti documents
+ */
+interface VijestiDocumentData {
+  /**
+   * Naslov field in *Vijesti*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vijesti.naslov
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  naslov: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Vijesti*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vijesti.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<VijestiDocumentDataSlicesSlice> /**
+   * Meta Description field in *Vijesti*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: vijesti.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Vijesti*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vijesti.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Vijesti*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: vijesti.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Vijesti document from Prismic
+ *
+ * - **API ID**: `vijesti`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type VijestiDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<VijestiDocumentData>,
+    "vijesti",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | ClanakDocument
   | FooterDocument
   | HomepageDocument
   | NasiLjudiDocument
   | NavbarDocument
-  | PageDocument;
+  | PageDocument
+  | VijestiDocument;
 
 /**
  * Primary content in *Citat → Primary*
@@ -1225,6 +1302,9 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      VijestiDocument,
+      VijestiDocumentData,
+      VijestiDocumentDataSlicesSlice,
       AllDocumentTypes,
       CitatSlice,
       CitatSliceDefaultPrimary,

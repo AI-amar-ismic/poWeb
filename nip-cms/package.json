@@ -14,6 +14,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@nextui-org/pagination": "^2.0.33",
     "@prismicio/client": "^7.4.1",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.4",

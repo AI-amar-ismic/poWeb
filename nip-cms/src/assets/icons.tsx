@@ -115,3 +115,20 @@ export const HamburguerIcon = ({ isOpen }: { isOpen: boolean }) => {
     </div>
   );
 };
+
+export const PaginationPolygonIcon = () => {
+  return (
+    <svg
+      width="9"
+      height="9"
+      viewBox="0 0 9 9"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.6001 4.50039L0.950099 8.91712L0.950099 0.0836612L8.6001 4.50039Z"
+        fill="white"
+      />
+    </svg>
+  );
+};
