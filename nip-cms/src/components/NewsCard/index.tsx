@@ -18,13 +18,21 @@ const NewsCard = ({ news, className, fullWidth }: NewsCardProps) => {
       className={`${styles.link} ${className}`}
     >
       <div className={`${styles.container} ${fullWidth ? styles.full : ""}`}>
-        <PrismicNextImage
-          field={news.data.istaknuta_slika}
-          width={364}
-          height={fullWidth ? 467 : 277}
-          className={styles.image}
-          quality={100}
-        />
+        {fullWidth ? (
+          <PrismicNextImage
+            field={news.data.istaknuta_slika}
+            className={styles.fullImage}
+            quality={100}
+          />
+        ) : (
+          <PrismicNextImage
+            field={news.data.istaknuta_slika}
+            width={364}
+            height={fullWidth ? 467 : 277}
+            className={styles.image}
+            quality={100}
+          />
+        )}
         <PrismicRichText
           field={news.data.naslov}
           components={{
