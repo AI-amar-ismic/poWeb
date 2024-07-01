@@ -28,7 +28,7 @@ export default async function Vijesti({
   const client = createClient();
   const home = await client.getByUID("vijesti", "vijesti");
   const data = await client.getByType("clanak", {
-    pageSize: 10,
+    pageSize: 7,
     page: currentPage,
     orderings: { field: "document.first_publication_date", direction: "desc" },
   });

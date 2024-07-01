@@ -26,7 +26,12 @@ const News = ({ home, data, currentPage }: NewsProps) => {
         <div className={styles.newsTopContainer}>
           <div className={styles.newsContainer}>
             {data?.results.map((news, index) => (
-              <NewsCard news={news} key={index} />
+              <NewsCard
+                news={news}
+                key={index}
+                className={`${index === 0 ? styles.full : ""}`}
+                fullWidth={index === 0}
+              />
             ))}
           </div>
           <PaginationComponent
