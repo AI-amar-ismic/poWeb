@@ -6,6 +6,7 @@ import {
   PaginationItemType,
 } from "@nextui-org/pagination";
 import { useRouter } from "next/navigation";
+import styles from "./index.module.scss";
 
 interface PaginationComponentProps {
   page: number;
@@ -30,7 +31,11 @@ const PaginationComponent = ({
   }: PaginationItemRenderProps) => {
     if (value === PaginationItemType.NEXT) {
       return (
-        <button key={key} onClick={onNext}>
+        <button
+          key={key}
+          onClick={onNext}
+          className={`${styles.button} ${styles.navigation}`}
+        >
           <PaginationPolygonIcon />
         </button>
       );
@@ -38,7 +43,11 @@ const PaginationComponent = ({
 
     if (value === PaginationItemType.PREV) {
       return (
-        <button key={key} onClick={onPrevious}>
+        <button
+          key={key}
+          onClick={onPrevious}
+          className={`${styles.mRight} ${styles.button} ${styles.navigation} ${styles.rotatePolygon}`}
+        >
           <PaginationPolygonIcon />
         </button>
       );
@@ -46,7 +55,10 @@ const PaginationComponent = ({
 
     if (value === PaginationItemType.DOTS) {
       return (
-        <button key={key} className={className}>
+        <button
+          key={key}
+          className={`${className} ${styles.mRight} ${styles.button}`}
+        >
           ...
         </button>
       );
@@ -54,7 +66,12 @@ const PaginationComponent = ({
 
     // cursor is the default item
     return (
-      <button key={key} ref={ref} onClick={() => setPage(value)}>
+      <button
+        key={key}
+        ref={ref}
+        onClick={() => setPage(value)}
+        className={`${styles.mRight} ${styles.button} ${isActive ? styles.active : ""}`}
+      >
         {value}
       </button>
     );
@@ -70,6 +87,7 @@ const PaginationComponent = ({
       onChange={(page) => router.push(`${baseRoute}?page=${page}`)}
       initialPage={1}
       renderItem={renderItem}
+      disableCursorAnimation
     />
   );
 };

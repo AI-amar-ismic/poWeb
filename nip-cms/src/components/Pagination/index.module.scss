@@ -1,0 +1,39 @@
+@import "../../styles/variables.scss";
+
+.mRight {
+  margin-right: 10px;
+}
+
+.button {
+  width: 35px;
+  height: 35px;
+  border: 1px solid $silver;
+  color: silver;
+  background-color: white;
+  border-radius: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+
+  &.active {
+    border: none;
+    background-color: $blue;
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+  }
+
+  &.navigation {
+    border: none;
+    background-color: $blue;
+  }
+
+  &.rotatePolygon {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}

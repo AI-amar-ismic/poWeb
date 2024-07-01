@@ -13,10 +13,18 @@ interface IHamburgerMenuProps {
 const HamburgerMenu = ({ data }: IHamburgerMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   const renderMenus = () => {
     return (
       <div className={styles.menuItemsContainer}>
-        <PrismicNextLink field={data.menu_1_link} className={styles.menuLink}>
+        <PrismicNextLink
+          field={data.menu_1_link}
+          className={styles.menuLink}
+          onClick={handleClose}
+        >
           <p className={styles.menuItem}>{data.menu_1_text}</p>
         </PrismicNextLink>
         <div className={styles.submenuContainer}>
@@ -26,6 +34,7 @@ const HamburgerMenu = ({ data }: IHamburgerMenuProps) => {
               field={item.link}
               className={styles.menuLink}
               key={`${index}-menu2`}
+              onClick={handleClose}
             >
               <PolygonIcon />
               <p className={styles.submenuItem}>{item.title}</p>
@@ -39,16 +48,25 @@ const HamburgerMenu = ({ data }: IHamburgerMenuProps) => {
               field={item.link}
               className={styles.menuLink}
               key={`${index}-menu3`}
+              onClick={handleClose}
             >
               <PolygonIcon />
               <p className={styles.submenuItem}>{item.title}</p>
             </PrismicNextLink>
           ))}
         </div>
-        <PrismicNextLink field={data.menu_4_link} className={styles.menuLink}>
+        <PrismicNextLink
+          field={data.menu_4_link}
+          className={styles.menuLink}
+          onClick={handleClose}
+        >
           <p className={styles.menuItem}>{data.menu_4_text}</p>
         </PrismicNextLink>
-        <PrismicNextLink field={data.menu_5_link} className={styles.menuLink}>
+        <PrismicNextLink
+          field={data.menu_5_link}
+          className={styles.menuLink}
+          onClick={handleClose}
+        >
           <p className={styles.menuItem}>{data.menu_5_text}</p>
         </PrismicNextLink>
       </div>
