@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { createClient } from "@/prismicio";
+import { filter } from "@prismicio/client";
 import styles from "./page.module.scss";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
@@ -32,8 +33,10 @@ export default async function Vijest({ params }: { params: Params }) {
     home.tags,
     {
       limit: 3,
+      filters: [filter.at("document.type", "clanak")],
     }
   );
+  console.log(relatedArticles);
 
   const getDate = () => {
     const date = new Date(home.first_publication_date);
@@ -103,7 +106,7 @@ export default async function Vijest({ params }: { params: Params }) {
             </div>
           </div>
         </div>
-        {relatedArticles.length > 1 && (
+        {relatedArticles && relatedArticles.length > 0 && (
           <div className={styles.relatedArticlesContainer}>
             <h2 className={styles.relatedArticlesTitle}>Vezane novosti</h2>
             <div className={styles.relatedArticles}>
