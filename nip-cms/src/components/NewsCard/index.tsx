@@ -14,7 +14,7 @@ interface NewsCardProps {
 const NewsCard = ({ news, className, fullWidth }: NewsCardProps) => {
   return (
     <Link
-      href={`/novosti/${news.uid}`}
+      href={`/vijesti/${news.uid}`}
       className={`${styles.link} ${className}`}
     >
       <div className={`${styles.container} ${fullWidth ? styles.full : ""}`}>

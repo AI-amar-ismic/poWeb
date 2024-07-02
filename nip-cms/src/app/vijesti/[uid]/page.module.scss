@@ -1,0 +1,209 @@
+@import "../../../styles/variables.scss";
+
+.container {
+  display: flex;
+  padding: 72px 20px;
+  justify-content: center;
+  width: 100%;
+
+  @media only screen and (min-width: 465px) {
+    padding: 85px 56px;
+  }
+  @media only screen and (min-width: 1024px) {
+    padding: 100px 90px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 80px;
+
+    @media only screen and (min-width: 1280px) {
+      max-width: 1410px;
+    }
+
+    .articleContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+
+      @media only screen and (min-width: 465px) {
+        gap: 60px;
+      }
+
+      .articleMetaInfo {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 27px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        color: $blue;
+      }
+
+      .article {
+        display: flex;
+        flex-direction: column;
+        gap: 34px;
+
+        @media only screen and (min-width: 465px) {
+          gap: 52px;
+        }
+
+        .title {
+          font-size: 40px;
+          font-weight: 600;
+          line-height: 60px;
+          letter-spacing: 0.02em;
+          text-align: left;
+          color: $blue;
+
+          @media only screen and (min-width: 465px) {
+            font-size: 60px;
+            line-height: 80px;
+          }
+        }
+
+        .image {
+          width: 100%;
+          object-fit: cover;
+          height: 300px;
+
+          @media only screen and (min-width: 465px) {
+            height: 440px;
+          }
+
+          @media only screen and (min-width: 850px) {
+            height: 582px;
+          }
+        }
+
+        .textContainer {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+
+          .paragraph {
+            //   font-family: Poppins;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0.02em;
+            text-align: left;
+            color: $blue;
+
+            @media only screen and (min-width: 465px) {
+              line-height: 27px;
+              font-size: 18px;
+            }
+          }
+
+          .paragraphStrong {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: 0.02em;
+            text-align: left;
+            color: $blue;
+            @media only screen and (min-width: 465px) {
+              line-height: 27px;
+              font-size: 18px;
+            }
+          }
+
+          .paragraphEm {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0.02em;
+            text-align: left;
+            color: $blue;
+            font-style: italic;
+            @media only screen and (min-width: 465px) {
+              line-height: 27px;
+              font-size: 18px;
+            }
+          }
+
+          .list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .listItem {
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 24px;
+              letter-spacing: 0.02em;
+              text-align: left;
+              color: $blue;
+              list-style: circle;
+              margin-left: 20px;
+              @media only screen and (min-width: 465px) {
+                line-height: 27px;
+                font-size: 18px;
+              }
+            }
+          }
+
+          .oList {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .oListItem {
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 24px;
+              letter-spacing: 0.02em;
+              text-align: left;
+              list-style: decimal;
+              color: $blue;
+              margin-left: 20px;
+              @media only screen and (min-width: 465px) {
+                line-height: 27px;
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .relatedArticlesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+
+    .relatedArticlesTitle {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0.02em;
+      text-align: left;
+      color: $blue;
+    }
+
+    .relatedArticles {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      @media only screen and (min-width: 465px) {
+        flex-direction: row;
+        gap: 24px;
+
+        .relatedNewsCard:nth-child(3) {
+          display: none;
+        }
+      }
+      @media only screen and (min-width: 1024px) {
+        .relatedNewsCard:nth-child(3) {
+          display: flex;
+        }
+      }
+    }
+  }
+}
