@@ -15,9 +15,9 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const client = createClient();
-  const home = await client.getByUID("clanak", params.uid);
+  const home: any = await client.getByUID("clanak", params.uid);
   const title = home.data.naslov[0]?.text ?? "";
-  const description = home.data.naslov[0]?.text.slice(0, 150) ?? "";
+  const description = home.data.tekst[0]?.text.slice(0, 150) ?? "";
   const imageUrl = home.data.istaknuta_slika.url ?? "";
 
   return {
