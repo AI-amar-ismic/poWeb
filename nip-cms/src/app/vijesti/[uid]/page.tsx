@@ -9,16 +9,24 @@ import { ClanakDocument } from "../../../../prismicio-types";
 
 type Params = { uid: string };
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
   const client = createClient();
-  const home = await client.getByUID("vijesti", "vijesti");
+  const home = await client.getByUID("clanak", params.uid);
+  const title = home.data.naslov[0]?.text ?? "";
+  const description = home.data.naslov[0]?.text.slice(0, 150) ?? "";
+  const imageUrl = home.data.istaknuta_slika.url ?? "";
 
   return {
-    title: home.data.meta_title,
-    description: home.data.meta_description,
+    title: title,
+    description: description,
     openGraph: {
-      title: home.data.meta_title ?? undefined,
-      images: [{ url: home.data.meta_image.url ?? "" }],
+      title: title,
+      description: description,
+      images: [{ url: imageUrl }],
     },
   };
 }
@@ -36,7 +44,6 @@ export default async function Vijest({ params }: { params: Params }) {
       filters: [filter.at("document.type", "clanak")],
     }
   );
-  console.log(relatedArticles);
 
   const getDate = () => {
     const date = new Date(home.first_publication_date);
