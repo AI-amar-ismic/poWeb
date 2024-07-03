@@ -1558,9 +1558,74 @@ export type RichTextSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *RichText → Primary*
+ */
+export interface RichTextSliceWithFloatingBoxPrimary {
+  /**
+   * Content field in *RichText → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Lorem ipsum...
+   * - **API ID Path**: rich_text.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Floating box title field in *RichText → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rich_text.primary.floating_box_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  floating_box_title: prismic.TitleField;
+}
+
+/**
+ * Primary content in *RichText → Items*
+ */
+export interface RichTextSliceWithFloatingBoxItem {
+  /**
+   * Name field in *RichText → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rich_text.items[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Link field in *RichText → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rich_text.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * With floating box variation for RichText Slice
+ *
+ * - **API ID**: `withFloatingBox`
+ * - **Description**: RichText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RichTextSliceWithFloatingBox = prismic.SharedSliceVariation<
+  "withFloatingBox",
+  Simplify<RichTextSliceWithFloatingBoxPrimary>,
+  Simplify<RichTextSliceWithFloatingBoxItem>
+>;
+
+/**
  * Slice variation for *RichText*
  */
-type RichTextSliceVariation = RichTextSliceDefault;
+type RichTextSliceVariation =
+  | RichTextSliceDefault
+  | RichTextSliceWithFloatingBox;
 
 /**
  * RichText Shared Slice
@@ -1645,8 +1710,11 @@ declare module "@prismicio/client" {
       OrganSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
+      RichTextSliceWithFloatingBoxPrimary,
+      RichTextSliceWithFloatingBoxItem,
       RichTextSliceVariation,
       RichTextSliceDefault,
+      RichTextSliceWithFloatingBox,
     };
   }
 }

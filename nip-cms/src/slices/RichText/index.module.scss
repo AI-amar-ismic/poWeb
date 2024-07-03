@@ -2,123 +2,181 @@
 
 .richtext {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 10px;
   max-width: 1410px;
   margin: 71px 0 80px 0;
 
-  h1 {
-    font-size: 35px;
-    font-weight: 600;
-    line-height: 50px;
-    letter-spacing: 0.02em;
-    text-align: left;
-    color: $blue;
-  }
-
-  h2 {
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 45px;
-    letter-spacing: 0.02em;
-    text-align: left;
-    color: $blue;
-    margin-bottom: 10px;
-  }
-
-  img {
-    width: 100%;
-    object-fit: cover;
-    height: 300px;
-
-    @media only screen and (min-width: 465px) {
-      height: 440px;
-    }
-
-    @media only screen and (min-width: 850px) {
-      height: 582px;
+  @media only screen and (min-width: 1024px) {
+    &.withFloat {
+      display: block;
     }
   }
 
-  p {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    text-align: left;
-    color: $blue;
-
-    @media only screen and (min-width: 465px) {
-      line-height: 27px;
-      font-size: 18px;
-    }
-  }
-
-  b {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    text-align: left;
-    color: $blue;
-    @media only screen and (min-width: 465px) {
-      line-height: 27px;
-      font-size: 18px;
-    }
-  }
-
-  em {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    text-align: left;
-    color: $blue;
-    font-style: italic;
-    @media only screen and (min-width: 465px) {
-      line-height: 27px;
-      font-size: 18px;
-    }
-  }
-
-  ul {
+  .floatContainer {
     display: flex;
     flex-direction: column;
+    margin-top: 50px;
+    width: 100%;
+    border: 2px solid $dark-blue;
+    padding: 20px 30px 35px 20px;
+    gap: 36px;
+
+    @media only screen and (min-width: 1024px) {
+      float: right;
+      width: 347px;
+      margin-left: 24px;
+    }
+
+    h2 {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 50px;
+      letter-spacing: 0.02em;
+      text-align: left;
+      color: $dark-blue;
+      margin-bottom: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .documentButton {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      border: 2px solid $dark-blue;
+
+      .documentTitle {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-align: center;
+        color: $dark-blue;
+      }
+    }
+  }
+
+  div {
     gap: 10px;
 
-    li {
+    h1 {
+      font-size: 35px;
+      font-weight: 600;
+      line-height: 50px;
+      letter-spacing: 0.02em;
+      text-align: left;
+      color: $blue;
+    }
+
+    h2 {
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 45px;
+      letter-spacing: 0.02em;
+      text-align: left;
+      color: $blue;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 300px;
+
+      @media only screen and (min-width: 465px) {
+        height: 440px;
+      }
+
+      @media only screen and (min-width: 850px) {
+        height: 582px;
+      }
+    }
+
+    p {
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
       letter-spacing: 0.02em;
       text-align: left;
       color: $blue;
-      list-style: circle;
-      margin-left: 20px;
+
       @media only screen and (min-width: 465px) {
         line-height: 27px;
         font-size: 18px;
       }
     }
-  }
 
-  ol {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    b {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: 0.02em;
+      text-align: left;
+      color: $blue;
+      @media only screen and (min-width: 465px) {
+        line-height: 27px;
+        font-size: 18px;
+      }
+    }
 
-    li {
+    em {
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
       letter-spacing: 0.02em;
       text-align: left;
-      list-style: decimal;
       color: $blue;
-      margin-left: 20px;
+      font-style: italic;
       @media only screen and (min-width: 465px) {
         line-height: 27px;
         font-size: 18px;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      li {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        color: $blue;
+        list-style: circle;
+        margin-left: 20px;
+        @media only screen and (min-width: 465px) {
+          line-height: 27px;
+          font-size: 18px;
+        }
+      }
+    }
+
+    ol {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      li {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        list-style: decimal;
+        color: $blue;
+        margin-left: 20px;
+        @media only screen and (min-width: 465px) {
+          line-height: 27px;
+          font-size: 18px;
+        }
       }
     }
   }
