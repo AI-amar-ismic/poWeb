@@ -26,47 +26,67 @@ const NasiLjudi = ({ slice }: NasiLjudiProps): JSX.Element => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.contentContainer}>
-        <div className={styles.titleContainer}>
-          <div className={styles.textContainer}>
-            <PrismicRichText
-              field={slice.primary.title}
-              components={{
-                heading2: ({ children }) => {
-                  return <h3 className={styles.title}>{children}</h3>;
-                },
-              }}
-            />
-            <PrismicRichText
-              field={slice.primary.subtitle}
-              components={{
-                paragraph: ({ children }) => {
-                  return <h3 className={styles.subtitle}>{children}</h3>;
-                },
-              }}
-            />
+  if (slice.variation === "default") {
+    return (
+      <div className={styles.container}>
+        <div className={styles.contentContainer}>
+          <div className={styles.titleContainer}>
+            <div className={styles.textContainer}>
+              <PrismicRichText
+                field={slice.primary.title}
+                components={{
+                  heading2: ({ children }) => {
+                    return <h3 className={styles.title}>{children}</h3>;
+                  },
+                }}
+              />
+              <PrismicRichText
+                field={slice.primary.subtitle}
+                components={{
+                  paragraph: ({ children }) => {
+                    return <h3 className={styles.subtitle}>{children}</h3>;
+                  },
+                }}
+              />
+            </div>
+            <NiPButton variant="primaryOutlined">
+              {slice.primary.button_text}
+            </NiPButton>
           </div>
-          <NiPButton variant="primaryOutlined">
-            {slice.primary.button_text}
-          </NiPButton>
-        </div>
-        <div className={styles.peopleTopContainer}>
-          <div className={styles.peopleContainer}>
-            {slice.items.map((person, index) => (
-              <div key={index}>
-                <PersonCard person={person} />
-              </div>
-            ))}
+          <div className={styles.peopleTopContainer}>
+            <div className={styles.peopleContainer}>
+              {slice.items.map((person, index) => (
+                <div key={index}>
+                  <PersonCard person={person} />
+                </div>
+              ))}
+            </div>
+            <NiPButton variant="primaryOutlined">
+              {slice.primary.button_text}
+            </NiPButton>
           </div>
-          <NiPButton variant="primaryOutlined">
-            {slice.primary.button_text}
-          </NiPButton>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className={styles.pageContainer}>
+        <PrismicRichText
+          field={slice.primary.title}
+          components={{
+            heading2: ({ children }) => {
+              return <h1 className={styles.title}>{children}</h1>;
+            },
+          }}
+        />
+        <div className={styles.peopleContainer}>
+          {slice.items.map((person, index) => (
+            <PersonCard person={person} key={`${index}-page`} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 };
 
 export default NasiLjudi;

@@ -1,0 +1,47 @@
+{
+  "id": "organ",
+  "type": "SharedSlice",
+  "name": "Organ",
+  "description": "Organ",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "naziv_organa": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Naziv organa",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {
+        "clan": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Clan",
+            "placeholder": "Ime clana",
+            "allowTargetBlank": false,
+            "single": "strong"
+          }
+        },
+        "pozicija": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Pozicija",
+            "placeholder": "Pozicija clana",
+            "allowTargetBlank": false,
+            "single": "paragraph"
+          }
+        }
+      }
+    }
+  ]
+}

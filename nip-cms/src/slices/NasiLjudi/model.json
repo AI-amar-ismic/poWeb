@@ -49,6 +49,36 @@
           }
         }
       }
+    },
+    {
+      "id": "page",
+      "name": "Page",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {
+        "covjek": {
+          "type": "Link",
+          "config": {
+            "label": "Covjek",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        }
+      }
     }
   ]
 }

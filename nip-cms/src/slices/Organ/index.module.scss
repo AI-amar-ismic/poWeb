@@ -1,0 +1,68 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  max-width: 1410px;
+  margin-bottom: 88px;
+
+  .title {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 50px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: $blue;
+  }
+
+  .peopleContainer {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 50px;
+
+    @media only screen and (min-width: 465px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      row-gap: 50px;
+      column-gap: 24px;
+    }
+
+    @media only screen and (min-width: 1025px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media only screen and (min-width: 1025px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media only screen and (min-width: 1600px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .personContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      max-width: 300px;
+
+      .name {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 27px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        color: $blue;
+      }
+      .position {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        color: $blue;
+      }
+    }
+  }
+}

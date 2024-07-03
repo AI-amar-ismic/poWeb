@@ -404,6 +404,75 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
+type KoSmoMiDocumentDataSlicesSlice =
+  | RichTextSlice
+  | ImageHeaderSlice
+  | OrganSlice
+  | NasiLjudiSlice;
+
+/**
+ * Content for Ko smo mi documents
+ */
+interface KoSmoMiDocumentData {
+  /**
+   * Slice Zone field in *Ko smo mi*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ko_smo_mi.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<KoSmoMiDocumentDataSlicesSlice> /**
+   * Meta Description field in *Ko smo mi*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: ko_smo_mi.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Ko smo mi*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: ko_smo_mi.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Ko smo mi*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: ko_smo_mi.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Ko smo mi document from Prismic
+ *
+ * - **API ID**: `ko_smo_mi`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type KoSmoMiDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<KoSmoMiDocumentData>,
+    "ko_smo_mi",
+    Lang
+  >;
+
 /**
  * Content for Nasi ljudi documents
  */
@@ -846,6 +915,7 @@ export type AllDocumentTypes =
   | ClanakDocument
   | FooterDocument
   | HomepageDocument
+  | KoSmoMiDocument
   | NasiLjudiDocument
   | NavbarDocument
   | PageDocument
@@ -1074,6 +1144,61 @@ export type HomeHeroSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ImageHeader → Primary*
+ */
+export interface ImageHeaderSliceDefaultPrimary {
+  /**
+   * Title field in *ImageHeader → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_header.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Background image field in *ImageHeader → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_header.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ImageHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageHeader*
+ */
+type ImageHeaderSliceVariation = ImageHeaderSliceDefault;
+
+/**
+ * ImageHeader Shared Slice
+ *
+ * - **API ID**: `image_header`
+ * - **Description**: ImageHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageHeaderSlice = prismic.SharedSlice<
+  "image_header",
+  ImageHeaderSliceVariation
+>;
+
+/**
  * Primary content in *NasiLjudi → Primary*
  */
 export interface NasiLjudiSliceDefaultPrimary {
@@ -1137,9 +1262,52 @@ export type NasiLjudiSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *NasiLjudi → Primary*
+ */
+export interface NasiLjudiSlicePagePrimary {
+  /**
+   * Title field in *NasiLjudi → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+}
+
+/**
+ * Primary content in *NasiLjudi → Items*
+ */
+export interface NasiLjudiSlicePageItem {
+  /**
+   * Covjek field in *NasiLjudi → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.items[].covjek
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  covjek: prismic.LinkField;
+}
+
+/**
+ * Page variation for NasiLjudi Slice
+ *
+ * - **API ID**: `page`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NasiLjudiSlicePage = prismic.SharedSliceVariation<
+  "page",
+  Simplify<NasiLjudiSlicePagePrimary>,
+  Simplify<NasiLjudiSlicePageItem>
+>;
+
+/**
  * Slice variation for *NasiLjudi*
  */
-type NasiLjudiSliceVariation = NasiLjudiSliceDefault;
+type NasiLjudiSliceVariation = NasiLjudiSliceDefault | NasiLjudiSlicePage;
 
 /**
  * NasiLjudi Shared Slice
@@ -1229,6 +1397,73 @@ export type NewsletterSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Organ → Primary*
+ */
+export interface OrganSliceDefaultPrimary {
+  /**
+   * Naziv organa field in *Organ → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: organ.primary.naziv_organa
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  naziv_organa: prismic.TitleField;
+}
+
+/**
+ * Primary content in *Organ → Items*
+ */
+export interface OrganSliceDefaultItem {
+  /**
+   * Clan field in *Organ → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Ime clana
+   * - **API ID Path**: organ.items[].clan
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  clan: prismic.RichTextField;
+
+  /**
+   * Pozicija field in *Organ → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Pozicija clana
+   * - **API ID Path**: organ.items[].pozicija
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  pozicija: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Organ Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OrganSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OrganSliceDefaultPrimary>,
+  Simplify<OrganSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Organ*
+ */
+type OrganSliceVariation = OrganSliceDefault;
+
+/**
+ * Organ Shared Slice
+ *
+ * - **API ID**: `organ`
+ * - **Description**: Organ
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OrganSlice = prismic.SharedSlice<"organ", OrganSliceVariation>;
+
+/**
  * Primary content in *RichText → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -1293,6 +1528,9 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      KoSmoMiDocument,
+      KoSmoMiDocumentData,
+      KoSmoMiDocumentDataSlicesSlice,
       NasiLjudiDocument,
       NasiLjudiDocumentData,
       NavbarDocument,
@@ -1315,15 +1553,27 @@ declare module "@prismicio/client" {
       HomeHeroSliceDefaultItem,
       HomeHeroSliceVariation,
       HomeHeroSliceDefault,
+      ImageHeaderSlice,
+      ImageHeaderSliceDefaultPrimary,
+      ImageHeaderSliceVariation,
+      ImageHeaderSliceDefault,
       NasiLjudiSlice,
       NasiLjudiSliceDefaultPrimary,
       NasiLjudiSliceDefaultItem,
+      NasiLjudiSlicePagePrimary,
+      NasiLjudiSlicePageItem,
       NasiLjudiSliceVariation,
       NasiLjudiSliceDefault,
+      NasiLjudiSlicePage,
       NewsletterSlice,
       NewsletterSliceDefaultPrimary,
       NewsletterSliceVariation,
       NewsletterSliceDefault,
+      OrganSlice,
+      OrganSliceDefaultPrimary,
+      OrganSliceDefaultItem,
+      OrganSliceVariation,
+      OrganSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

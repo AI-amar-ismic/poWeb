@@ -20,6 +20,7 @@ export default async function RootLayout({
 }>) {
   const client = createClient();
   const navbar = await client.getByUID("navbar", "navbar");
+  console.log(navbar.data.menu_2_submenus);
   const footer = await client.getByUID("footer", "footer");
   const data = navbar.data;
   const footerData = footer.data;

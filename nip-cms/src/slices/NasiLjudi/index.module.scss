@@ -98,3 +98,39 @@
     }
   }
 }
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 75px;
+  width: 100%;
+  align-items: stretch;
+  max-width: 1410px;
+  margin-bottom: 61px;
+
+  .title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 39px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: $blue;
+  }
+
+  .peopleContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @media only screen and (min-width: 465px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    @media only screen and (min-width: 1025px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+  }
+}

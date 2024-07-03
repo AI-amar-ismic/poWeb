@@ -1,0 +1,54 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"naziv_organa": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Although"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"clan",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "In officia nulla ad adipisicing eiusmod non. Magna eu qui cillum."
+									}
+								}
+							]
+						}
+					],
+					[
+						"pozicija",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Do et nulla id id irure. Elit eiusmod sint officia ad do duis. Cillum fugiat aute do tempor incididunt laboris ullamco ut duis culpa."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]
