@@ -5,7 +5,7 @@ import {
   SliceComponentProps,
   JSXMapSerializer,
 } from "@prismicio/react";
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => {

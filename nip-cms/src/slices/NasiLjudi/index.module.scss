@@ -107,6 +107,14 @@
   align-items: stretch;
   max-width: 1410px;
   margin-bottom: 61px;
+  margin-top: 76px;
+  @media only screen and (min-width: 465px) {
+    margin-top: 85px;
+  }
+
+  @media only screen and (min-width: 1027px) {
+    margin-top: 97px;
+  }
 
   .title {
     font-size: 40px;

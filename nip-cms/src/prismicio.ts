@@ -17,11 +17,7 @@ const routes: prismic.ClientConfig["routes"] = [
   { type: "vijesti", path: "/vijesti", uid: "vijesti" },
   { type: "clanak", path: "/vijesti/:uid", uid: "vijesti/:uid" },
   { type: "ko_smo_mi", path: "/ko-smo-mi/:uid" },
-  // {
-  //   type: "ko_smo_mi",
-  //   path: "/ko-smo-mi/nasi-ljudi",
-  //   uid: "nasi-ljudi",
-  // },
+  { type: "za_sta_se_zalazemo", path: "/za-sta-se-zalazemo/:uid" },
 ];
 
 /**
