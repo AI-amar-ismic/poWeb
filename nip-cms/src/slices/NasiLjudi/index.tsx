@@ -49,7 +49,10 @@ const NasiLjudi = ({ slice }: NasiLjudiProps): JSX.Element => {
                 }}
               />
             </div>
-            <NiPButton variant="primaryOutlined">
+            <NiPButton
+              variant="primaryOutlined"
+              link={slice.primary.button_link}
+            >
               {slice.primary.button_text}
             </NiPButton>
           </div>
@@ -61,7 +64,10 @@ const NasiLjudi = ({ slice }: NasiLjudiProps): JSX.Element => {
                 </div>
               ))}
             </div>
-            <NiPButton variant="primaryOutlined">
+            <NiPButton
+              variant="primaryOutlined"
+              link={slice.primary.button_link}
+            >
               {slice.primary.button_text}
             </NiPButton>
           </div>

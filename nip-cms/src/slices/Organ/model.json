@@ -42,6 +42,93 @@
           }
         }
       }
+    },
+    {
+      "id": "organizacijeCentrala",
+      "name": "Organizacije - centrala",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {
+        "naziv_ureda": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Naziv ureda",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading3"
+          }
+        },
+        "adresa_linija_1": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Adresa linija 1",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "adresa_linija_2": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Adresa linija 2",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        }
+      }
+    },
+    {
+      "id": "kantonOrganizacije",
+      "name": "Kanton organizacije",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "naziv_kantona": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Naziv kantona",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading3"
+          }
+        }
+      },
+      "items": {
+        "organizacija": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Organizacija",
+            "placeholder": "Organizacija",
+            "allowTargetBlank": false,
+            "single": "strong"
+          }
+        },
+        "adresa": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Informacije",
+            "placeholder": "Adresa, br telefona, radno vrijeme itd",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        }
+      }
     }
   ]
 }

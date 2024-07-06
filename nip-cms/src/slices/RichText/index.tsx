@@ -31,10 +31,12 @@ const RichText = ({ slice }: RichTextProps): JSX.Element => {
   if (slice.variation === "default") {
     return (
       <section className={styles.richtext}>
-        <PrismicRichText
-          field={slice.primary.content}
-          components={components}
-        />
+        <div>
+          <PrismicRichText
+            field={slice.primary.content}
+            components={components}
+          />
+        </div>
       </section>
     );
   } else {

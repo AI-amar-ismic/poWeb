@@ -13,20 +13,23 @@
           "placeholder": ""
         }
       },
-      "title": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Title",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "heading1"
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "vezane_vijesti": {
+              "type": "SharedSlice"
+            },
+            "organ": {
+              "type": "SharedSlice"
+            },
+            "kontakt": {
+              "type": "SharedSlice"
+            },
+            "image_header": {
+              "type": "SharedSlice"
+            },
             "rich_text": {
               "type": "SharedSlice"
             }

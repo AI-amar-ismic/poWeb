@@ -6,8 +6,10 @@ export const components = {
   citat: dynamic(() => import("./Citat")),
   home_hero: dynamic(() => import("./HomeHero")),
   image_header: dynamic(() => import("./ImageHeader")),
+  kontakt: dynamic(() => import("./Kontakt")),
   nasi_ljudi: dynamic(() => import("./NasiLjudi")),
   newsletter: dynamic(() => import("./Newsletter")),
   organ: dynamic(() => import("./Organ")),
   rich_text: dynamic(() => import("./RichText")),
+  vezane_vijesti: dynamic(() => import("./VezaneVijesti")),
 };

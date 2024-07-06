@@ -346,6 +346,17 @@ interface HomepageDocumentData {
   novosti_dugme_tekst: prismic.KeyTextField;
 
   /**
+   * Novosti dugme link field in *Homepage*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.novosti_dugme_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  novosti_dugme_link: prismic.LinkField;
+
+  /**
    * Slice Zone field in *Homepage*
    *
    * - **Field Type**: Slice Zone
@@ -763,23 +774,17 @@ interface NavbarDocumentData {
 export type NavbarDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<NavbarDocumentData>, "navbar", Lang>;
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+type PageDocumentDataSlicesSlice =
+  | VezaneVijestiSlice
+  | OrganSlice
+  | KontaktSlice
+  | ImageHeaderSlice
+  | RichTextSlice;
 
 /**
  * Content for Page documents
  */
 interface PageDocumentData {
-  /**
-   * Title field in *Page*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: page.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
   /**
    * Slice Zone field in *Page*
    *
@@ -1265,6 +1270,116 @@ export type ImageHeaderSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Kontakt → Primary*
+ */
+export interface KontaktSliceDefaultPrimary {
+  /**
+   * Title field in *Kontakt → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: kontakt.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Subtitle field in *Kontakt → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: kontakt.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Adresa field in *Kontakt → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: kontakt.primary.adresa
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  adresa: prismic.KeyTextField;
+
+  /**
+   * Broj telefona field in *Kontakt → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: kontakt.primary.broj_telefona
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  broj_telefona: prismic.KeyTextField;
+
+  /**
+   * Email field in *Kontakt → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: kontakt.primary.email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Kontakt → Items*
+ */
+export interface KontaktSliceDefaultItem {
+  /**
+   * Icon field in *Kontakt → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: kontakt.items[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * Link field in *Kontakt → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: kontakt.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Default variation for Kontakt Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type KontaktSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<KontaktSliceDefaultPrimary>,
+  Simplify<KontaktSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Kontakt*
+ */
+type KontaktSliceVariation = KontaktSliceDefault;
+
+/**
+ * Kontakt Shared Slice
+ *
+ * - **API ID**: `kontakt`
+ * - **Description**: Kontakt
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type KontaktSlice = prismic.SharedSlice<
+  "kontakt",
+  KontaktSliceVariation
+>;
+
+/**
  * Primary content in *NasiLjudi → Primary*
  */
 export interface NasiLjudiSliceDefaultPrimary {
@@ -1297,6 +1412,16 @@ export interface NasiLjudiSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   button_text: prismic.KeyTextField;
+
+  /**
+   * Button link field in *NasiLjudi → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: nasi_ljudi.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
 }
 
 /**
@@ -1516,9 +1641,128 @@ export type OrganSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Organ → Primary*
+ */
+export interface OrganSliceOrganizacijeCentralaPrimary {
+  /**
+   * Title field in *Organ → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: organ.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+}
+
+/**
+ * Primary content in *Organ → Items*
+ */
+export interface OrganSliceOrganizacijeCentralaItem {
+  /**
+   * Naziv ureda field in *Organ → Items*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: organ.items[].naziv_ureda
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  naziv_ureda: prismic.TitleField;
+
+  /**
+   * Adresa linija 1 field in *Organ → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: organ.items[].adresa_linija_1
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  adresa_linija_1: prismic.RichTextField;
+
+  /**
+   * Adresa linija 2 field in *Organ → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: organ.items[].adresa_linija_2
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  adresa_linija_2: prismic.RichTextField;
+}
+
+/**
+ * Organizacije - centrala variation for Organ Slice
+ *
+ * - **API ID**: `organizacijeCentrala`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OrganSliceOrganizacijeCentrala = prismic.SharedSliceVariation<
+  "organizacijeCentrala",
+  Simplify<OrganSliceOrganizacijeCentralaPrimary>,
+  Simplify<OrganSliceOrganizacijeCentralaItem>
+>;
+
+/**
+ * Primary content in *Organ → Primary*
+ */
+export interface OrganSliceKantonOrganizacijePrimary {
+  /**
+   * Naziv kantona field in *Organ → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: organ.primary.naziv_kantona
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  naziv_kantona: prismic.TitleField;
+}
+
+/**
+ * Primary content in *Organ → Items*
+ */
+export interface OrganSliceKantonOrganizacijeItem {
+  /**
+   * Organizacija field in *Organ → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Organizacija
+   * - **API ID Path**: organ.items[].organizacija
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  organizacija: prismic.RichTextField;
+
+  /**
+   * Informacije field in *Organ → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Adresa, br telefona, radno vrijeme itd
+   * - **API ID Path**: organ.items[].adresa
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  adresa: prismic.RichTextField;
+}
+
+/**
+ * Kanton organizacije variation for Organ Slice
+ *
+ * - **API ID**: `kantonOrganizacije`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OrganSliceKantonOrganizacije = prismic.SharedSliceVariation<
+  "kantonOrganizacije",
+  Simplify<OrganSliceKantonOrganizacijePrimary>,
+  Simplify<OrganSliceKantonOrganizacijeItem>
+>;
+
+/**
  * Slice variation for *Organ*
  */
-type OrganSliceVariation = OrganSliceDefault;
+type OrganSliceVariation =
+  | OrganSliceDefault
+  | OrganSliceOrganizacijeCentrala
+  | OrganSliceKantonOrganizacije;
 
 /**
  * Organ Shared Slice
@@ -1639,6 +1883,66 @@ export type RichTextSlice = prismic.SharedSlice<
   RichTextSliceVariation
 >;
 
+/**
+ * Primary content in *VezaneVijesti → Primary*
+ */
+export interface VezaneVijestiSliceDefaultPrimary {
+  /**
+   * Naslov field in *VezaneVijesti → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vezane_vijesti.primary.naslov
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  naslov: prismic.TitleField;
+}
+
+/**
+ * Primary content in *VezaneVijesti → Items*
+ */
+export interface VezaneVijestiSliceDefaultItem {
+  /**
+   * Tag field in *VezaneVijesti → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vezane_vijesti.items[].tag
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for VezaneVijesti Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VezaneVijestiSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VezaneVijestiSliceDefaultPrimary>,
+  Simplify<VezaneVijestiSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *VezaneVijesti*
+ */
+type VezaneVijestiSliceVariation = VezaneVijestiSliceDefault;
+
+/**
+ * VezaneVijesti Shared Slice
+ *
+ * - **API ID**: `vezane_vijesti`
+ * - **Description**: VezaneVijesti
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VezaneVijestiSlice = prismic.SharedSlice<
+  "vezane_vijesti",
+  VezaneVijestiSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1691,6 +1995,11 @@ declare module "@prismicio/client" {
       ImageHeaderSliceDefaultPrimary,
       ImageHeaderSliceVariation,
       ImageHeaderSliceDefault,
+      KontaktSlice,
+      KontaktSliceDefaultPrimary,
+      KontaktSliceDefaultItem,
+      KontaktSliceVariation,
+      KontaktSliceDefault,
       NasiLjudiSlice,
       NasiLjudiSliceDefaultPrimary,
       NasiLjudiSliceDefaultItem,
@@ -1706,8 +2015,14 @@ declare module "@prismicio/client" {
       OrganSlice,
       OrganSliceDefaultPrimary,
       OrganSliceDefaultItem,
+      OrganSliceOrganizacijeCentralaPrimary,
+      OrganSliceOrganizacijeCentralaItem,
+      OrganSliceKantonOrganizacijePrimary,
+      OrganSliceKantonOrganizacijeItem,
       OrganSliceVariation,
       OrganSliceDefault,
+      OrganSliceOrganizacijeCentrala,
+      OrganSliceKantonOrganizacije,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceWithFloatingBoxPrimary,
@@ -1715,6 +2030,11 @@ declare module "@prismicio/client" {
       RichTextSliceVariation,
       RichTextSliceDefault,
       RichTextSliceWithFloatingBox,
+      VezaneVijestiSlice,
+      VezaneVijestiSliceDefaultPrimary,
+      VezaneVijestiSliceDefaultItem,
+      VezaneVijestiSliceVariation,
+      VezaneVijestiSliceDefault,
     };
   }
 }

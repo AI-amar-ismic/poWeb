@@ -29,6 +29,13 @@
 				"__TYPE__": "FieldContent",
 				"value": "pitch",
 				"type": "Text"
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io"
+				}
 			}
 		},
 		"items": [

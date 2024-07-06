@@ -50,5 +50,123 @@
 				]
 			}
 		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "organizacijeCentrala",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Cowboy"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"naziv_ureda",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "heading3",
+									"content": {
+										"text": "Writing"
+									}
+								}
+							]
+						}
+					],
+					[
+						"adresa_linija_1",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Anim nostrud consectetur nostrud voluptate. Quis adipisicing quis qui enim eu quis veniam."
+									}
+								}
+							]
+						}
+					],
+					[
+						"adresa_linija_2",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Proident aute ut aliquip dolor sint. Excepteur nisi in cupidatat. Non laboris sint deserunt nisi."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "kantonOrganizacije",
+		"primary": {
+			"naziv_kantona": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading3",
+						"content": {
+							"text": "Silence"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"organizacija",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Laboris nulla enim non eu culpa qui commodo duis. Ea ex aute mollit adipisicing aute quis cillum."
+									}
+								}
+							]
+						}
+					],
+					[
+						"adresa",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Cupidatat id officia exercitation voluptate tempor. Lorem laboris elit ut sunt mollit magna quis nulla Lorem."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
 	}
 ]

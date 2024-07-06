@@ -1,30 +1,40 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .input {
-    width: 100%;
-    padding: 5px 25px 5px 25px;
-    gap: 10px;
-    background-color: white;
-    border: none;
-    border-radius: 0;
-    height: 55px;
+  width: 100%;
+  padding: 5px 25px 5px 25px;
+  gap: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 0;
+  height: 55px;
+  box-sizing: border-box;
 
-    &::placeholder {
-        font-size: 14px;
-        font-weight: 300;
-        line-height: 24px;
-        letter-spacing: 0.02em;
-        text-align: left;
-        color: $blue;
-    }
+  &.textarea {
+    height: auto;
+  }
 
-    &::-ms-input-placeholder {
-        font-size: 14px;
-        font-weight: 300;
-        line-height: 24px;
-        letter-spacing: 0.02em;
-        text-align: left;
-        color: $blue;
-    }
+  &::placeholder,
+  ::-webkit-input-placeholder {
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: $blue;
+  }
 
+  &::-ms-input-placeholder {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: $blue;
+  }
+
+  &.secondary {
+    background-color: $light-blue;
+  }
 }

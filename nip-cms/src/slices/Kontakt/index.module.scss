@@ -1,0 +1,103 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 71px;
+  width: 100%;
+  max-width: 1410px;
+  padding: 71px 0;
+
+  @media only screen and (min-width: 465px) {
+    padding: 102px 0 81px;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    flex-direction: row;
+    gap: 19px;
+  }
+
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @media only screen and (min-width: 1024px) {
+      max-width: 50%;
+    }
+
+    .title {
+      color: $blue;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 60px;
+      text-align: left;
+
+      @media only screen and (min-width: 1024px) {
+        font-size: 50px;
+        line-height: 70px;
+      }
+    }
+
+    .subtitle {
+      color: $blue;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+    }
+
+    .contactContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .contact {
+        display: flex;
+        gap: 19px;
+      }
+
+      .socials {
+        display: flex;
+        gap: 17px;
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .labelContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+
+      p {
+        color: $blue;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+      }
+    }
+
+    .partialContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      @media only screen and (min-width: 465px) {
+        flex-direction: row;
+        gap: 24px;
+      }
+    }
+
+    @media only screen and (min-width: 1024px) {
+      width: 100%;
+    }
+  }
+}

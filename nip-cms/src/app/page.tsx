@@ -111,6 +111,7 @@ export default async function Index() {
         subtitle={home.data.novosti_podnaslov}
         data={latestNews}
         buttonText={home.data.novosti_dugme_tekst as string}
+        buttonLink={home.data.novosti_dugme_link}
       />
       <SliceZone slices={otherSlices} components={components} />
     </>

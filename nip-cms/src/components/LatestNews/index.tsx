@@ -2,19 +2,27 @@
 import { PrismicRichText } from "@prismicio/react";
 import styles from "./index.module.scss";
 import { ClanakDocument } from "../../../prismicio-types";
-import { RichTextField, TitleField } from "@prismicio/client";
+import { RichTextField, TitleField, LinkField } from "@prismicio/client";
 import NiPButton from "../Button";
 import NewsCard from "../NewsCard";
 import { useEffect, useState } from "react";
+import { PrismicNextLink } from "@prismicio/next";
 
 interface LatestNewsProps {
   data: ClanakDocument[];
   title: TitleField;
   subtitle: RichTextField;
   buttonText: string;
+  buttonLink: LinkField;
 }
 
-const LatestNews = ({ data, title, subtitle, buttonText }: LatestNewsProps) => {
+const LatestNews = ({
+  data,
+  title,
+  subtitle,
+  buttonText,
+  buttonLink,
+}: LatestNewsProps) => {
   const [screenWidth, setScreenWidth] = useState<number>(0);
 
   useEffect(() => {
@@ -48,7 +56,9 @@ const LatestNews = ({ data, title, subtitle, buttonText }: LatestNewsProps) => {
               }}
             />
           </div>
-          <NiPButton variant="primaryOutlined">{buttonText}</NiPButton>
+          <NiPButton variant="primaryOutlined" link={buttonLink}>
+            {buttonText}
+          </NiPButton>
         </div>
         <div className={styles.newsTopContainer}>
           <div className={styles.newsContainer}>
@@ -58,7 +68,9 @@ const LatestNews = ({ data, title, subtitle, buttonText }: LatestNewsProps) => {
               </div>
             ))}
           </div>
-          <NiPButton variant="primaryOutlined">{buttonText}</NiPButton>
+          <NiPButton variant="primaryOutlined" link={buttonLink}>
+            {buttonText}
+          </NiPButton>
         </div>
       </div>
     </div>

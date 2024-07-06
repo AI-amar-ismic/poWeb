@@ -36,6 +36,14 @@
             "label": "Button text",
             "placeholder": ""
           }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button link",
+            "placeholder": "",
+            "select": null
+          }
         }
       },
       "items": {

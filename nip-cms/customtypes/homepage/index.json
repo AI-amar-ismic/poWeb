@@ -47,6 +47,14 @@
           "placeholder": ""
         }
       },
+      "novosti_dugme_link": {
+        "type": "Link",
+        "config": {
+          "label": "Novosti dugme link",
+          "placeholder": "",
+          "select": null
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
