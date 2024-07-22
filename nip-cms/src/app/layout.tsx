@@ -6,6 +6,8 @@ import { Poppins } from "next/font/google";
 import "../styles/reset.css";
 import styles from "./layout.module.scss";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
+import { InfoIconToast } from "@/assets/icons";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -28,6 +30,21 @@ export default async function RootLayout({
     <html lang="en" className={font.className}>
       <body className={styles.body}>
         <Navbar data={navbar.data} />
+        <Toaster
+          position="bottom-left"
+          toastOptions={{
+            style: {
+              boxShadow: "0px 7px 16px 0px #00000026",
+              borderRadius: "0px",
+              borderLeft: "10px solid #142C4C",
+              display: "flex",
+              gap: "19px",
+              color: "#00212E",
+              fontSize: "14px",
+            },
+            // icon: <InfoIconToast />,
+          }}
+        />
         {children}
         <Footer data={footerData} />
       </body>
