@@ -8,6 +8,7 @@ import { useOptimistic, useState } from "react";
 import toast from "react-hot-toast";
 import { emailRegex } from "@/assets/regex";
 import { InfoIconToast } from "@/assets/icons";
+import { handleAddContact } from "@/app/actions";
 
 interface NewsletterClientProps {
   sliceData: NewsletterProps;
@@ -72,7 +73,7 @@ const NewsletterClient = ({
                   return;
                 }
 
-                await handleClick({ contacts: [{ first_name, email }] });
+                await handleAddContact({ contacts: [{ first_name, email }] });
                 toast.success(
                   "Uspješno ste se prijavili na newsletter Naroda i Pravde.",
                   { icon: <InfoIconToast /> }
