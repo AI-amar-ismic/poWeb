@@ -72,7 +72,7 @@ const NewsletterClient = ({
                   return;
                 }
 
-                handleClick({ contacts: [{ first_name, email }] });
+                await handleClick({ contacts: [{ first_name, email }] });
                 toast.success(
                   "Uspješno ste se prijavili na newsletter Naroda i Pravde.",
                   { icon: <InfoIconToast /> }
