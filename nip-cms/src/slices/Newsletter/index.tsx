@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import NewsletterClient from "./wrapper";
 import toast from "react-hot-toast";
+import { handleAddContact } from "@/app/actions";
 
 export interface Contacts {
   contacts: { email: string; first_name: string }[];
@@ -21,17 +22,7 @@ export type NewsletterProps = SliceComponentProps<Content.NewsletterSlice>;
  * Component for "Newsletter" Slices.
  */
 const Newsletter = (props: NewsletterProps): JSX.Element => {
-  const handleClick = async (props: Contacts) => {
-    "use server";
-    axios.put("https://api.sendgrid.com/v3/marketing/contacts", props, {
-      headers: {
-        Authorization:
-          "Bearer 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",
-      },
-    });
-  };
-
-  return <NewsletterClient sliceData={props} handleClick={handleClick} />;
+  return <NewsletterClient sliceData={props} handleClick={handleAddContact} />;
 };
 
 export default Newsletter;
