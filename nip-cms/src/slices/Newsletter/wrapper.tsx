@@ -14,7 +14,6 @@ interface NewsletterClientProps {
   sliceData: NewsletterProps;
   handleClick: (props: Contacts) => Promise<any>;
 }
-
 const NewsletterClient = ({
   sliceData,
   handleClick,
