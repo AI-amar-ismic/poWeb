@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { emailRegex } from "@/assets/regex";
 import { InfoIconToast } from "@/assets/icons";
 import { handleAddContact } from "@/app/actions";
+import axios from "axios";
 
 interface NewsletterClientProps {
   sliceData: NewsletterProps;
@@ -24,6 +25,12 @@ const NewsletterClient = ({
   const [nameError, setNameError] = useState(false);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
+
+  const addContact = async (props: Contacts) => {
+    axios.put("/api/newsletter", props, {
+      headers: { Authorization: process.env.NEXT_PUBLIC_NEWSLETTER_SECRET },
+    });
+  };
 
   return (
     <div
@@ -73,7 +80,8 @@ const NewsletterClient = ({
                   return;
                 }
 
-                await handleAddContact({ contacts: [{ first_name, email }] });
+                await addContact({ contacts: [{ first_name, email }] });
+
                 toast.success(
                   "Uspješno ste se prijavili na newsletter Naroda i Pravde.",
                   { icon: <InfoIconToast /> }
