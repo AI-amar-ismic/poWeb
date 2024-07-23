@@ -1,11 +1,7 @@
 import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import styles from "./index.module.scss";
-import Input from "@/components/Input";
-import NiPButton from "@/components/Button";
-import { useState } from "react";
+import { SliceComponentProps } from "@prismicio/react";
+
 import NewsletterClient from "./wrapper";
-import toast from "react-hot-toast";
 
 export interface Contacts {
   contacts: { email: string; first_name: string }[];

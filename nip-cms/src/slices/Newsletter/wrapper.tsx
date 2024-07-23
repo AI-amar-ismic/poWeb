@@ -1,14 +1,14 @@
 "use client";
 import { PrismicRichText } from "@prismicio/react";
-import Newsletter, { Contacts, NewsletterProps } from ".";
+import { NewsletterProps } from ".";
 import styles from "./index.module.scss";
 import Input from "@/components/Input";
 import NiPButton from "@/components/Button";
-import { useOptimistic, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { emailRegex } from "@/assets/regex";
 import { InfoIconToast } from "@/assets/icons";
-import axios from "axios";
+import { addContact } from "@/utils/api";
 
 interface NewsletterClientProps {
   sliceData: NewsletterProps;
@@ -17,15 +17,7 @@ interface NewsletterClientProps {
 const NewsletterClient = ({ sliceData }: NewsletterClientProps) => {
   const { slice } = sliceData;
   const [first_name, setName] = useState("");
-  const [nameError, setNameError] = useState(false);
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState(false);
-
-  const addContact = async (props: Contacts) => {
-    axios.put("/api/newsletter", props, {
-      headers: { Authorization: process.env.NEXT_PUBLIC_NEWSLETTER_SECRET },
-    });
-  };
 
   return (
     <div
@@ -65,12 +57,10 @@ const NewsletterClient = ({ sliceData }: NewsletterClientProps) => {
               variant="primary"
               onClick={async () => {
                 if (first_name === "") {
-                  setNameError(true);
                   toast.error("Molimo Vas unesite validno ime i prezime");
                   return;
                 }
                 if (email === "" || !emailRegex.test(email)) {
-                  setEmailError(true);
                   toast.error("Molimo Vas unesite validan e-mail");
                   return;
                 }

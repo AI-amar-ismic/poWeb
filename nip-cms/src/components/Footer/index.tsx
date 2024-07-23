@@ -2,19 +2,27 @@
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { FooterDocumentData, Simplify } from "../../../prismicio-types";
 import styles from "./index.module.scss";
-import exp from "constants";
-import { EmailIcon, HomeIcon, PhoneIcon, PolygonIcon } from "@/assets/icons";
+import {
+  EmailIcon,
+  HomeIcon,
+  InfoIconToast,
+  PhoneIcon,
+  PolygonIcon,
+} from "@/assets/icons";
 import NiPButton from "../Button";
 import { PrismicRichText } from "@prismicio/react";
 import Input from "../Input";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { emailRegex } from "@/assets/regex";
+import { addContact } from "@/utils/api";
 
 interface FooterProps {
   data: Simplify<FooterDocumentData>;
 }
 
 const Footer = ({ data }: FooterProps) => {
-  const [name, setName] = useState("");
+  const [first_name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   return (
@@ -92,16 +100,37 @@ const Footer = ({ data }: FooterProps) => {
             }}
           />
           <Input
-            value={name}
+            value={first_name}
             onChange={(value) => setName(value)}
             placeholder="Ime i Prezime"
           />
           <Input
             value={email}
-            onChange={(value) => setName(email)}
+            onChange={(value) => setEmail(value)}
             placeholder="E-mail"
           />
-          <NiPButton variant="primary">{data.newsletter_button_text}</NiPButton>
+          <NiPButton
+            variant="primary"
+            onClick={async () => {
+              if (first_name === "") {
+                toast.error("Molimo Vas unesite validno ime i prezime");
+                return;
+              }
+              if (email === "" || !emailRegex.test(email)) {
+                toast.error("Molimo Vas unesite validan e-mail");
+                return;
+              }
+
+              await addContact({ contacts: [{ first_name, email }] });
+
+              toast.success(
+                "Uspješno ste se prijavili na newsletter Naroda i Pravde.",
+                { icon: <InfoIconToast /> }
+              );
+            }}
+          >
+            {data.newsletter_button_text}
+          </NiPButton>
         </div>
       </div>
     </div>
