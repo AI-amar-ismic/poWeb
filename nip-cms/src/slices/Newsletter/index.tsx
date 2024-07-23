@@ -4,10 +4,8 @@ import styles from "./index.module.scss";
 import Input from "@/components/Input";
 import NiPButton from "@/components/Button";
 import { useState } from "react";
-import axios from "axios";
 import NewsletterClient from "./wrapper";
 import toast from "react-hot-toast";
-import { handleAddContact } from "@/app/actions";
 
 export interface Contacts {
   contacts: { email: string; first_name: string }[];
@@ -22,7 +20,7 @@ export type NewsletterProps = SliceComponentProps<Content.NewsletterSlice>;
  * Component for "Newsletter" Slices.
  */
 const Newsletter = (props: NewsletterProps): JSX.Element => {
-  return <NewsletterClient sliceData={props} handleClick={handleAddContact} />;
+  return <NewsletterClient sliceData={props} />;
 };
 
 export default Newsletter;

@@ -8,18 +8,13 @@ import { useOptimistic, useState } from "react";
 import toast from "react-hot-toast";
 import { emailRegex } from "@/assets/regex";
 import { InfoIconToast } from "@/assets/icons";
-import { handleAddContact } from "@/app/actions";
 import axios from "axios";
 
 interface NewsletterClientProps {
   sliceData: NewsletterProps;
-  handleClick: (props: Contacts) => Promise<any>;
 }
 
-const NewsletterClient = ({
-  sliceData,
-  handleClick,
-}: NewsletterClientProps) => {
+const NewsletterClient = ({ sliceData }: NewsletterClientProps) => {
   const { slice } = sliceData;
   const [first_name, setName] = useState("");
   const [nameError, setNameError] = useState(false);
