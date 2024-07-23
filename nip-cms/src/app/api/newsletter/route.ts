@@ -47,7 +47,6 @@ export async function PUT(req: NextRequest, res: NextApiResponse) {
     },
     body: JSON.stringify(body),
   });
-  console.log(response);
   return NextResponse.json(
     { message: response.statusText },
     { status: response.status }
