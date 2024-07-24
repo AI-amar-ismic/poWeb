@@ -9,7 +9,6 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
   const secret = process.env.PRISMIC_WEBHOOK_SECRET;
   const sendgridKey = process.env.SENDGRID_API_KEY;
   const sendgridTemplateID = process.env.SENDGRID_DYNAMIC_TEMPLATE_ID;
-  const url = `${process.env.SENDGRID_BASE_URL}"/v3/contactdb/recipients"`;
   const body = await new Response(req.body).json();
 
   // Check if the secret is correct
@@ -56,8 +55,5 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
   };
   mail.sendMultiple(msg);
 
-  return NextResponse.json(
-    { message: JSON.stringify(article) },
-    { status: 200 }
-  );
+  return NextResponse.json({ message: "Success!" }, { status: 200 });
 }
