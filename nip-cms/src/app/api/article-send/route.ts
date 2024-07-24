@@ -21,6 +21,9 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
   const article = await prismicClient.getByType("clanak", {
     filters: [filter.at("document.id", body.documents[0])],
   });
+  if (article.results.length === 0) {
+    return NextResponse.json({ message: "No articles" }, { status: 500 });
+  }
 
   // Fetch all contacts' emails from the Sendgrid API and place them in an array of strings
   const client = new Client();
@@ -30,6 +33,9 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     url: "/v3/marketing/contacts",
     method: "GET",
   });
+  if (results[1].statusCode !== 200) {
+    return NextResponse.json({ message: "No contacts" }, { status: 500 });
+  }
   const mailsArray = results[1].result.map((mail: any) => mail.email);
 
   // Initialize the Sendgrid client and send the email to all contacts
