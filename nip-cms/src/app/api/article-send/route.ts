@@ -22,8 +22,8 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     filters: [filter.at("document.id", body.documents[0])],
   });
   console.log(article.results[0].data);
-  if (article.results.length === 0) {
-    return NextResponse.json({ message: "No articles" }, { status: 403 });
+  if (article.results.length === 0 || article.results[0].type !== "clanak") {
+    return NextResponse.json({ message: "No articles" }, { status: 204 });
   }
 
   // Fetch all contacts' emails from the Sendgrid API and place them in an array
