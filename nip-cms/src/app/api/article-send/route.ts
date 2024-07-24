@@ -21,7 +21,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
   const article = await prismicClient.getByType("clanak", {
     filters: [filter.at("document.id", body.documents[0])],
   });
-  console.log(article);
+  console.log(article.results[0].data);
   if (article.results.length === 0) {
     return NextResponse.json({ message: "No articles" }, { status: 403 });
   }
