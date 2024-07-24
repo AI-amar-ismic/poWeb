@@ -56,7 +56,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
             saopcenjeImage: article.results[0].data.istaknuta_slika,
             title: asText(article.results[0].data.naslov),
             subtitle:
-              asText(article.results[0].data.tekst).slice(0, 100) + "...",
+              asText(article.results[0].data.tekst).slice(0, 300) + "...",
             link: `https://po-web.vercel.app/vijesti/${article.results[0].uid}`,
           },
         },
