@@ -22,45 +22,53 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     filters: [filter.at("document.id", body.documents[0])],
   });
   console.log(article.results[0].data);
-  if (article.results.length === 0 || article.results[0].type !== "clanak") {
-    return NextResponse.json({ message: "No articles" }, { status: 204 });
-  }
+  if (
+    // check if the article exists
+    article.results_size > 0 &&
+    // prismic sends webhooks for all documents, we only want articles
+    article.results[0].type === "clanak" &&
+    // prismic sends webhooks for all changes, we only want new articles
+    article.results[0].first_publication_date ===
+      article.results[0].last_publication_date
+  ) {
+    // Fetch all contacts' emails from the Sendgrid API and place them in an array
+    const client = new Client();
+    client.setApiKey(sendgridKey || "");
+    const results = await client.request({
+      headers: { "Content-Type": "application/json" },
+      url: "/v3/marketing/contacts",
+      method: "GET",
+    });
+    if (results[1].statusCode === 500) {
+      return NextResponse.json({ message: "No contacts" }, { status: 500 });
+    }
+    const mailsArray = results[1].result.map((mail: any) => mail.email);
 
-  // Fetch all contacts' emails from the Sendgrid API and place them in an array
-  const client = new Client();
-  client.setApiKey(sendgridKey || "");
-  const results = await client.request({
-    headers: { "Content-Type": "application/json" },
-    url: "/v3/marketing/contacts",
-    method: "GET",
-  });
-  if (results[1].statusCode === 500) {
-    return NextResponse.json({ message: "No contacts" }, { status: 500 });
-  }
-  const mailsArray = results[1].result.map((mail: any) => mail.email);
-
-  // Initialize the Sendgrid client and send the email to all contacts
-  mail.setApiKey(sendgridKey || "");
-  const msg = {
-    to: mailsArray,
-    from: "novosti@narodipravda.ba",
-    personalizations: [
-      {
-        to: mailsArray,
-        dynamic_template_data: {
-          saopcenjeImage: article.results[0].data.istaknuta_slika,
-          title: asText(article.results[0].data.naslov),
-          subtitle: asText(article.results[0].data.tekst).slice(0, 100) + "...",
-          link: `https://po-web.vercel.app/vijesti/${article.results[0].uid}`,
+    // Initialize the Sendgrid client and send the email to all contacts
+    mail.setApiKey(sendgridKey || "");
+    const msg = {
+      to: mailsArray,
+      from: "novosti@narodipravda.ba",
+      personalizations: [
+        {
+          to: mailsArray,
+          dynamic_template_data: {
+            saopcenjeImage: article.results[0].data.istaknuta_slika,
+            title: asText(article.results[0].data.naslov),
+            subtitle:
+              asText(article.results[0].data.tekst).slice(0, 100) + "...",
+            link: `https://po-web.vercel.app/vijesti/${article.results[0].uid}`,
+          },
         },
-      },
-    ],
-    template_id: sendgridTemplateID,
-    subject: "Hello world",
-    text: "Hello plain world!",
-    html: "<p>Hello HTML world!</p>",
-  };
-  mail.sendMultiple(msg);
+      ],
+      template_id: sendgridTemplateID,
+      subject: "Hello world",
+      text: "Hello plain world!",
+      html: "<p>Hello HTML world!</p>",
+    };
+    mail.sendMultiple(msg);
+    return NextResponse.json({ message: "Success!" }, { status: 200 });
+  }
 
-  return NextResponse.json({ message: "Success!" }, { status: 200 });
+  return NextResponse.json({ message: "Not valid" }, { status: 403 });
 }
