@@ -48,9 +48,10 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
       {
         to: mailsArray,
         dynamic_template_data: {
-          saopcenjeImage: article.results[0].data.istaknuta_slika,
-          title: asText(article.results[0].data.naslov),
-          subtitle: asText(article.results[0].data.tekst).slice(0, 100) + "...",
+          saopcenjeImage: "article.results[0].data.istaknuta_slika",
+          title: "asText(article.results[0].data.naslov)",
+          subtitle:
+            "asText(article.results[0].data.tekst).slice(0, 100)" + "...",
           link: `https://po-web.vercel.app/vijesti/${article.results[0].uid}`,
         },
       },
