@@ -22,9 +22,9 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     filters: [filter.at("document.id", body.documents[0])],
   });
   console.log(article.results[0].data);
-  //   if (article.results.length === 0) {
-  //     return NextResponse.json({ message: "No articles" }, { status: 403 });
-  //   }
+  if (article.results.length === 0) {
+    return NextResponse.json({ message: "No articles" }, { status: 403 });
+  }
 
   // Fetch all contacts' emails from the Sendgrid API and place them in an array
   const client = new Client();
@@ -34,9 +34,9 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     url: "/v3/marketing/contacts",
     method: "GET",
   });
-  //   if (results[1].statusCode !== 200) {
-  //     return NextResponse.json({ message: "No contacts" }, { status: 500 });
-  //   }
+  if (results[1].statusCode === 500) {
+    return NextResponse.json({ message: "No contacts" }, { status: 500 });
+  }
   const mailsArray = results[1].result.map((mail: any) => mail.email);
 
   // Initialize the Sendgrid client and send the email to all contacts
@@ -48,10 +48,9 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
       {
         to: mailsArray,
         dynamic_template_data: {
-          saopcenjeImage: "article.results[0].data.istaknuta_slika",
-          title: "asText(article.results[0].data.naslov)",
-          subtitle:
-            "asText(article.results[0].data.tekst).slice(0, 100)" + "...",
+          saopcenjeImage: article.results[0].data.istaknuta_slika,
+          title: asText(article.results[0].data.naslov),
+          subtitle: asText(article.results[0].data.tekst).slice(0, 100) + "...",
           link: `https://po-web.vercel.app/vijesti/${article.results[0].uid}`,
         },
       },
