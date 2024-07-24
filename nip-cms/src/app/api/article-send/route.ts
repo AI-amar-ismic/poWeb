@@ -22,7 +22,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     filters: [filter.at("document.id", body.documents[0])],
   });
   if (article.results.length === 0) {
-    return NextResponse.json({ message: "No articles" }, { status: 500 });
+    return NextResponse.json({ message: "No articles" }, { status: 403 });
   }
 
   // Fetch all contacts' emails from the Sendgrid API and place them in an array of strings
