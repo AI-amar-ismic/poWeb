@@ -25,7 +25,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     return NextResponse.json({ message: "No articles" }, { status: 403 });
   }
 
-  // Fetch all contacts' emails from the Sendgrid API and place them in an array of strings
+  // Fetch all contacts' emails from the Sendgrid API and place them in an array
   const client = new Client();
   client.setApiKey(sendgridKey || "");
   const results = await client.request({
