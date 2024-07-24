@@ -22,7 +22,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     filters: [filter.at("document.id", body.documents[0])],
   });
 
-  // Fetch all contacts' emails from the Sendgrid API and place them in an array
+  // Fetch all contacts' emails from the Sendgrid API and place them in an array of strings
   const client = new Client();
   client.setApiKey(sendgridKey || "");
   const results = await client.request({
