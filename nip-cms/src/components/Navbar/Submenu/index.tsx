@@ -15,7 +15,7 @@ const Submenu = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <DropdownMenu.Root onOpenChange={(e) => setIsOpen(e)}>
+    <DropdownMenu.Root onOpenChange={(e) => setIsOpen(e)} open={isOpen}>
       <DropdownMenu.Trigger asChild>
         <div
           className={`${styles.menuContainer} ${isOpen ? styles.border : ""}`}
@@ -34,6 +34,7 @@ const Submenu = ({
           {menu.map((item, index) => (
             <PrismicNextLink
               field={item.link}
+              onClick={() => setIsOpen(false)}
               className={styles.submenuItemContainer}
               key={index}
             >

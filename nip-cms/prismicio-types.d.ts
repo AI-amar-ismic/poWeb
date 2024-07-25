@@ -40,6 +40,17 @@ interface ClanakDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   tekst: prismic.RichTextField;
+
+  /**
+   * Originalni datum field in *Clanak*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: Za clanke sa starog weba, za nove clanke ostaviti prazno
+   * - **API ID Path**: clanak.originalni_datum
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  originalni_datum: prismic.DateField;
 }
 
 /**

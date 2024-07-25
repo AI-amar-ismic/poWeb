@@ -46,7 +46,9 @@ export default async function Vijest({ params }: { params: Params }) {
   );
 
   const getDate = () => {
-    const date = new Date(home.first_publication_date);
+    const date = new Date(
+      home.data.originalni_datum || home.first_publication_date
+    );
     return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
   };
 
