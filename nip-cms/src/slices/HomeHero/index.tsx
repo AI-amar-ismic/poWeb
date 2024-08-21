@@ -104,9 +104,6 @@ const HomeHero = ({ slice }: HomeHeroProps): JSX.Element => {
                     },
                   }}
                 />
-                <PrismicNextLink field={item.procitaj_vise_link}>
-                  <p className={styles.subText}>Pročitaj više</p>
-                </PrismicNextLink>
               </div>
             ))}
           </div>
