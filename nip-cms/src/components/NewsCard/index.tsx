@@ -23,6 +23,7 @@ const NewsCard = ({ news, className, fullWidth }: NewsCardProps) => {
             field={news.data.istaknuta_slika}
             className={styles.fullImage}
             quality={100}
+            priority
           />
         ) : (
           <PrismicNextImage
