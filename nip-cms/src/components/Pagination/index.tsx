@@ -88,6 +88,7 @@ const PaginationComponent = ({
       initialPage={1}
       renderItem={renderItem}
       disableCursorAnimation
+      siblings={0}
     />
   );
 };
