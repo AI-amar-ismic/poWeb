@@ -23,6 +23,11 @@
   &.primary {
     background-color: $dark-blue;
     color: white;
+
+    &:disabled {
+      background-color: $silver;
+      cursor: not-allowed;
+    }
   }
 
   &.primaryOutlined {
