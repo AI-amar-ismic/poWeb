@@ -12,10 +12,11 @@ import {
 import NiPButton from "../Button";
 import { PrismicRichText } from "@prismicio/react";
 import Input from "../Input";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { emailRegex } from "@/assets/regex";
 import { addContact } from "@/utils/api";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface FooterProps {
   data: Simplify<FooterDocumentData>;
@@ -24,6 +25,34 @@ interface FooterProps {
 const Footer = ({ data }: FooterProps) => {
   const [first_name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsVerified] = useState(false);
+
+  async function handleCaptchaSubmission(token: string | null) {
+    try {
+      if (token) {
+        await fetch("/api/recaptcha", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token }),
+        });
+        setIsVerified(true);
+      }
+    } catch (e) {
+      setIsVerified(false);
+    }
+  }
+
+  const handleChange = (token: string | null) => {
+    handleCaptchaSubmission(token);
+  };
+
+  function handleExpired() {
+    setIsVerified(false);
+  }
 
   return (
     <div className={styles.container}>
@@ -109,6 +138,13 @@ const Footer = ({ data }: FooterProps) => {
             onChange={(value) => setEmail(value)}
             placeholder="E-mail"
           />
+          <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+            ref={recaptchaRef}
+            onChange={handleChange}
+            onExpired={handleExpired}
+            size="invisible"
+          />
           <NiPButton
             variant="primary"
             onClick={async () => {
@@ -128,6 +164,7 @@ const Footer = ({ data }: FooterProps) => {
                 { icon: <InfoIconToast /> }
               );
             }}
+            disabled={!isVerified}
           >
             {data.newsletter_button_text}
           </NiPButton>

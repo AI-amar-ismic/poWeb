@@ -15,6 +15,7 @@ interface NiPButtonProps {
   children: React.ReactNode;
   link?: LinkField;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const NiPButton = ({
@@ -23,6 +24,7 @@ const NiPButton = ({
   children,
   link,
   fullWidth,
+  disabled,
 }: NiPButtonProps) => {
   const getColor = () => {
     switch (variant) {
@@ -47,6 +49,7 @@ const NiPButton = ({
     <button
       onClick={onClick}
       className={`${styles.button} ${getColor()} ${fullWidth ? styles.fullWidth : ""}`}
+      disabled={disabled}
     >
       {children}
     </button>

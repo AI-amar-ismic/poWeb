@@ -4,11 +4,12 @@ import { NewsletterProps } from ".";
 import styles from "./index.module.scss";
 import Input from "@/components/Input";
 import NiPButton from "@/components/Button";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { emailRegex } from "@/assets/regex";
 import { InfoIconToast } from "@/assets/icons";
 import { addContact } from "@/utils/api";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface NewsletterClientProps {
   sliceData: NewsletterProps;
@@ -18,6 +19,34 @@ const NewsletterClient = ({ sliceData }: NewsletterClientProps) => {
   const { slice } = sliceData;
   const [first_name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsVerified] = useState(false);
+
+  async function handleCaptchaSubmission(token: string | null) {
+    try {
+      if (token) {
+        await fetch("/api/recaptcha", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token }),
+        });
+        setIsVerified(true);
+      }
+    } catch (e) {
+      setIsVerified(false);
+    }
+  }
+
+  const handleChange = (token: string | null) => {
+    handleCaptchaSubmission(token);
+  };
+
+  function handleExpired() {
+    setIsVerified(false);
+  }
 
   return (
     <div
@@ -53,6 +82,13 @@ const NewsletterClient = ({ sliceData }: NewsletterClientProps) => {
               onChange={(value) => setEmail(value)}
               placeholder="E-mail"
             />
+            <ReCAPTCHA
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+              ref={recaptchaRef}
+              onChange={handleChange}
+              onExpired={handleExpired}
+              size="invisible"
+            />
             <NiPButton
               variant="primary"
               onClick={async () => {
@@ -72,6 +108,7 @@ const NewsletterClient = ({ sliceData }: NewsletterClientProps) => {
                   { icon: <InfoIconToast /> }
                 );
               }}
+              disabled={!isVerified}
             >
               {slice.primary.button_text}
             </NiPButton>
