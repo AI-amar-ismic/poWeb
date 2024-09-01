@@ -43,7 +43,6 @@ const NewsletterClient = ({ sliceData }: NewsletterClientProps) => {
   const handleChange = (token: string | null) => {
     handleCaptchaSubmission(token);
   };
-
   function handleExpired() {
     setIsVerified(false);
   }
