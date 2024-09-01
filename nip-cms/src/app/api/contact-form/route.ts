@@ -38,6 +38,6 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
 <p style="text-align: left;">Poruka:</p>
 <p style="text-align: left;">${poruka}</p>`,
   };
-  mail.send(msg);
+  await mail.send(msg);
   return NextResponse.json({ message: "Success!" }, { status: 200 });
 }
