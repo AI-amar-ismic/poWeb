@@ -10,7 +10,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
   // Initialize the Sendgrid client and send the email to all contacts
   mail.setApiKey(sendgridKey || "");
   const msg = {
-    to: "info@narodipravda.ba",
+    to: "it@narodipravda.ba",
     from: "novosti@narodipravda.ba",
     subject: "Novi upit na webu",
     text: "Hello plain world!",
@@ -36,7 +36,8 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
 </tbody>
 </table>
 <p style="text-align: left;">Poruka:</p>
-<p style="text-align: left;">${poruka}</p>`,
+<p style="text-align: left;">${poruka}</p>
+<p style="text-align: left;">**ODGOVARANJEM NA OVAJ EMAIL ODGOVARATE DIREKTNO POŠILJAOCU NA ${email}**</p>`,
   };
   await mail.send(msg);
   return NextResponse.json({ message: "Success!" }, { status: 200 });
