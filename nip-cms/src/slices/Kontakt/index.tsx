@@ -2,11 +2,14 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import styles from "./index.module.scss";
-import { EmailIcon, HomeIcon, PhoneIcon } from "@/assets/icons";
+import { EmailIcon, HomeIcon, InfoIconToast, PhoneIcon } from "@/assets/icons";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { useState } from "react";
 import Input from "@/components/Input";
 import NiPButton from "@/components/Button";
+import { sendContactForm } from "@/utils/api";
+import toast from "react-hot-toast";
+import { emailRegex } from "@/assets/regex";
 
 /**
  * Props for `Kontakt`.
@@ -114,7 +117,43 @@ const Kontakt = ({ slice }: KontaktProps): JSX.Element => {
             isTextArea
           />
         </div>
-        <NiPButton variant="primary">Pošalji</NiPButton>
+        <NiPButton
+          variant="primary"
+          onClick={async () => {
+            if (name === "") {
+              toast.error("Molimo Vas unesite validno ime i prezime");
+              return;
+            }
+            if (email === "" || !emailRegex.test(email)) {
+              toast.error("Molimo Vas unesite validan e-mail");
+              return;
+            }
+            if (telefon === "") {
+              toast.error("Molimo Vas unesite validan broj telefona");
+              return;
+            }
+            if (prebivaliste === "") {
+              toast.error("Molimo Vas unesite validno mjesto prebivališta");
+              return;
+            }
+            if (poruka === "") {
+              toast.error("Molimo Vas unesite validnu poruku");
+              return;
+            }
+            await sendContactForm({
+              name,
+              email,
+              telefon,
+              prebivaliste,
+              poruka,
+            });
+            toast.success("Uspješno ste poslali poruku Narodu i Pravdi.", {
+              icon: <InfoIconToast />,
+            });
+          }}
+        >
+          Pošalji
+        </NiPButton>
       </div>
     </section>
   );
