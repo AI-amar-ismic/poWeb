@@ -140,16 +140,21 @@ const Kontakt = ({ slice }: KontaktProps): JSX.Element => {
               toast.error("Molimo Vas unesite validnu poruku");
               return;
             }
-            await sendContactForm({
+            sendContactForm({
               name,
               email,
               telefon,
               prebivaliste,
               poruka,
-            });
-            toast.success("Uspješno ste poslali poruku Narodu i Pravdi.", {
-              icon: <InfoIconToast />,
-            });
+            })
+              .catch(() =>
+                toast.error("Došlo je do greške, molimo pokušajte kasnije.")
+              )
+              .then(() =>
+                toast.success("Uspješno ste poslali poruku Narodu i Pravdi.", {
+                  icon: <InfoIconToast />,
+                })
+              );
           }}
         >
           Pošalji
