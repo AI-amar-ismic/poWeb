@@ -33,11 +33,15 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
 <td style="width: 50%; height: 18px;">Mjesto prebivali&scaron;ta</td>
 <td style="width: 50%; height: 18px;">${prebivaliste}</td>
 </tr>
+<tr style="height: 18px;">
+<td style="width: 50%; height: 18px;">Poruka</td>
+<td style="width: 50%; height: 18px;">${poruka}</td>
+</tr>
 </tbody>
 </table>
-<p style="text-align: left;">Poruka:</p>
-<p style="text-align: left;">${poruka}</p>
-<p style="text-align: left;">**ODGOVARANJEM NA OVAJ EMAIL ODGOVARATE DIREKTNO POŠILJAOCU NA ${email}**</p>`,
+<em><b><p style="text-align: left;">**UPOZORENJE**</p></b></em>
+<p style="text-align: left;">Ne otvarati linkove poslane kroz kontakt formu, moguće da sadrže maliciozan sadržaj</p>
+<p style="text-align: left;">Odgovaranjem na ovaj email odgovarate direktno pošiljaocu na ${email}</p>`,
   };
   await mail.send(msg);
   return NextResponse.json({ message: "Success!" }, { status: 200 });

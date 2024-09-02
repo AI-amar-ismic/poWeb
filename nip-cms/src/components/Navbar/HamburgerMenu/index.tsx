@@ -88,6 +88,7 @@ const HamburgerMenu = ({ data }: IHamburgerMenuProps) => {
               variant="secondaryOutlined"
               link={data.button_1_link}
               fullWidth
+              onClick={() => setIsOpen(false)}
             >
               {data.button_1_text as string}
             </NiPButton>
