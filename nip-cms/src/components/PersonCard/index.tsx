@@ -7,7 +7,11 @@ import { PrismicRichText } from "@prismicio/react";
 const PersonCard = ({ person }: { person: any }) => {
   return (
     <div className={styles.container}>
-      <PrismicNextImage field={person.covjek.data.slika} />
+      <PrismicNextImage
+        field={person.covjek.data.slika}
+        width={320}
+        height={310}
+      />
       <PrismicRichText
         field={person.covjek.data.ime_prezime}
         components={{

@@ -129,16 +129,15 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+
     @media only screen and (min-width: 465px) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
     }
     @media only screen and (min-width: 1025px) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      flex-wrap: nowrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
 }
