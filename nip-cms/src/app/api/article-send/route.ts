@@ -57,7 +57,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
             title: asText(article.results[0].data.naslov),
             subtitle:
               asText(article.results[0].data.tekst).slice(0, 300) + "...",
-            link: `https://po-web.vercel.app/vijesti/${article.results[0].uid}`,
+            link: `https://narodipravda.ba/vijesti/${article.results[0].uid}`,
           },
         },
       ],
