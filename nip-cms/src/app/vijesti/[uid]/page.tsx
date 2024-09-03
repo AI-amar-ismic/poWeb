@@ -55,7 +55,10 @@ export default async function Vijest({ params }: { params: Params }) {
       home[0].tags,
       {
         limit: 3,
-        filters: [filter.at("document.type", "clanak")],
+        filters: [
+          filter.at("document.type", "clanak"),
+          filter.not("document.id", home[0].id),
+        ],
       }
     );
 
@@ -149,14 +152,13 @@ export default async function Vijest({ params }: { params: Params }) {
       </div>
     );
   } else {
-    console.log(params.uid);
     const redirectRoute = wordpressRedirects.find(
       (redirect) => redirect.source === `/${params.uid}`
     );
     if (redirectRoute) {
       permanentRedirect(`/vijesti/${redirectRoute.destination}`);
     } else {
-      redirect("/404");
+      notFound();
     }
   }
 }
