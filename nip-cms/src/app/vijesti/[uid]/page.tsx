@@ -17,31 +17,20 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const client = createClient();
-  let article: any = [];
-  client
-    .getAllByUIDs("clanak", [params.uid])
-    .then((res) => (article = res))
-    .catch(() => console.log("error"));
+  const article: any = await client.getByUID("clanak", params.uid);
 
-  if (article.length === 0) {
-    return {
-      title: "Nepoznata stranica",
-      description: "Nepoznata stranica",
-    };
-  } else {
-    const title = article.data.naslov[0]?.text ?? "";
-    const description = article.data.tekst[0]?.text.slice(0, 150) ?? "";
-    const imageUrl = article.data.istaknuta_slika.url ?? "";
-    return {
+  const title = article.data.naslov[0]?.text ?? "";
+  const description = article.data.tekst[0]?.text.slice(0, 150) ?? "";
+  const imageUrl = article.data.istaknuta_slika.url ?? "";
+  return {
+    title: title,
+    description: description,
+    openGraph: {
       title: title,
       description: description,
-      openGraph: {
-        title: title,
-        description: description,
-        images: [{ url: imageUrl }],
-      },
-    };
-  }
+      images: [{ url: imageUrl }],
+    },
+  };
 }
 
 export default async function Vijest({ params }: { params: Params }) {
