@@ -20,14 +20,22 @@
   .newsContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 50px;
 
-    @media only screen and (min-width: 465px) {
+    @media only screen and (min-width: 765px) {
       flex-direction: row;
       gap: 24px;
+      align-items: flex-start;
 
       .card:nth-child(3) {
         display: none;
+      }
+    }
+
+    @media only screen and (min-width: 1024px) {
+      .card:nth-child(3) {
+        display: flex;
       }
     }
   }
