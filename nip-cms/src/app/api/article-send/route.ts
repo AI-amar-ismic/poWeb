@@ -5,7 +5,7 @@ import mail from "@sendgrid/mail";
 import { createClient } from "@/prismicio";
 import { asText, filter } from "@prismicio/client";
 
-export async function POST(req: NextRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest, res: NextApiResponse) {
   const secret = process.env.PRISMIC_WEBHOOK_SECRET;
   const sendgridKey = process.env.SENDGRID_API_KEY;
   const sendgridTemplateID = process.env.SENDGRID_DYNAMIC_TEMPLATE_ID;
