@@ -18,6 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   &.active {
     border: none;
@@ -38,5 +39,15 @@
     svg {
       transform: rotate(180deg);
     }
+  }
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  ul {
+    display: flex;
   }
 }

@@ -89,6 +89,7 @@ const PaginationComponent = ({
       renderItem={renderItem}
       disableCursorAnimation
       siblings={0}
+      className={styles.container}
     />
   );
 };
