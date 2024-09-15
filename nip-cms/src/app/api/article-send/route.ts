@@ -5,7 +5,7 @@ import mail from "@sendgrid/mail";
 import { createClient } from "@/prismicio";
 import { asText, filter } from "@prismicio/client";
 
-export async function GET(req: NextRequest, res: NextApiResponse) {
+export async function POST(req: NextRequest, res: NextApiResponse) {
   const secret = process.env.PRISMIC_WEBHOOK_SECRET;
   const sendgridKey = process.env.SENDGRID_API_KEY;
   const sendgridTemplateID = process.env.SENDGRID_DYNAMIC_TEMPLATE_ID;
@@ -47,11 +47,11 @@ export async function GET(req: NextRequest, res: NextApiResponse) {
     // Initialize the Sendgrid client and send the email to all contacts
     mail.setApiKey(sendgridKey || "");
     const msg = {
-      to: mailsArray,
+      to: "it@narodipravda.ba",
       from: "novosti@narodipravda.ba",
       personalizations: [
         {
-          to: mailsArray,
+          to: "it@narodipravda.ba",
           dynamic_template_data: {
             saopcenjeImage: article.results[0].data.istaknuta_slika,
             title: asText(article.results[0].data.naslov),
