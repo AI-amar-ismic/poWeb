@@ -18,6 +18,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "harmonika": {
+              "type": "SharedSlice"
+            },
             "vezane_vijesti": {
               "type": "SharedSlice"
             },

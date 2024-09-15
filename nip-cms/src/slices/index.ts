@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 
 export const components = {
   citat: dynamic(() => import("./Citat")),
+  harmonika: dynamic(() => import("./Harmonika")),
   home_hero: dynamic(() => import("./HomeHero")),
   image_header: dynamic(() => import("./ImageHeader")),
   kontakt: dynamic(() => import("./Kontakt")),

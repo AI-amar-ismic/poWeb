@@ -786,6 +786,7 @@ export type NavbarDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<NavbarDocumentData>, "navbar", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | HarmonikaSlice
   | VezaneVijestiSlice
   | OrganSlice
   | KontaktSlice
@@ -1074,6 +1075,76 @@ type CitatSliceVariation = CitatSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type CitatSlice = prismic.SharedSlice<"citat", CitatSliceVariation>;
+
+/**
+ * Primary content in *Harmonika → Primary*
+ */
+export interface HarmonikaSliceDefaultPrimary {
+  /**
+   * Title field in *Harmonika → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: harmonika.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Harmonika → Items*
+ */
+export interface HarmonikaSliceDefaultItem {
+  /**
+   * Title field in *Harmonika → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: harmonika.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Document field in *Harmonika → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: harmonika.items[].document
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  document: prismic.LinkField;
+}
+
+/**
+ * Default variation for Harmonika Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HarmonikaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HarmonikaSliceDefaultPrimary>,
+  Simplify<HarmonikaSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Harmonika*
+ */
+type HarmonikaSliceVariation = HarmonikaSliceDefault;
+
+/**
+ * Harmonika Shared Slice
+ *
+ * - **API ID**: `harmonika`
+ * - **Description**: Harmonika
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HarmonikaSlice = prismic.SharedSlice<
+  "harmonika",
+  HarmonikaSliceVariation
+>;
 
 /**
  * Primary content in *HomeHero → Primary*
@@ -1997,6 +2068,11 @@ declare module "@prismicio/client" {
       CitatSliceDefaultPrimary,
       CitatSliceVariation,
       CitatSliceDefault,
+      HarmonikaSlice,
+      HarmonikaSliceDefaultPrimary,
+      HarmonikaSliceDefaultItem,
+      HarmonikaSliceVariation,
+      HarmonikaSliceDefault,
       HomeHeroSlice,
       HomeHeroSliceDefaultPrimary,
       HomeHeroSliceDefaultItem,
