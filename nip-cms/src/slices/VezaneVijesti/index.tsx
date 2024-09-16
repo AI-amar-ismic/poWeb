@@ -20,6 +20,7 @@ const VezaneVijesti = async ({ slice }: VezaneVijestiProps) => {
   const relatedArticles = await client.getAllBySomeTags<ClanakDocument>(tags, {
     limit: 3,
     filters: [filter.at("document.type", "clanak")],
+    orderings: { field: "document.first_publication_date", direction: "desc" },
   });
 
   return (
