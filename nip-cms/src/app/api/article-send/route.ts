@@ -21,7 +21,6 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
   const article = await prismicClient.getByType("clanak", {
     filters: [filter.at("document.id", body.documents[0])],
   });
-  console.log(article.results[0].data);
   if (
     // check if the article exists
     article.results_size > 0 &&
@@ -39,7 +38,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
       url: "/v3/marketing/contacts",
       method: "GET",
     });
-    if (results[1].statusCode === 500) {
+    if (results[0].statusCode === 500) {
       return NextResponse.json({ message: "No contacts" }, { status: 500 });
     }
     const mailsArray = results[1].result.map((mail: any) => mail.email);
