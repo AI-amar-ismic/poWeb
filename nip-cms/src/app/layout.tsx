@@ -8,6 +8,7 @@ import styles from "./layout.module.scss";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/react";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -49,7 +50,7 @@ export default async function RootLayout({
         <Footer data={footerData} />
       </body>
       <SpeedInsights />
-      <Analytics />
+      <GoogleAnalytics />
       <PrismicPreview repositoryName={repositoryName} />
     </html>
   );
