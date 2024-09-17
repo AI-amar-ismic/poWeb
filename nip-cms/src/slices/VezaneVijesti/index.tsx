@@ -22,7 +22,6 @@ const VezaneVijesti = async ({ slice }: VezaneVijestiProps) => {
     filters: [filter.at("document.type", "clanak")],
     orderings: { field: "document.first_publication_date", direction: "desc" },
   });
-
   return (
     <section
       data-slice-type={slice.slice_type}
