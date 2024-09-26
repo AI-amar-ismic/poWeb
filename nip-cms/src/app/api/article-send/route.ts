@@ -18,17 +18,20 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
 
   // Initiate the Prismic client and fetch the article from the webhook by document ID
   const prismicClient = createClient();
-  const article = await prismicClient.getByType("clanak", {
+  const article = await prismicClient.getSingle("clanak", {
     filters: [filter.at("document.id", body.documents[0])],
   });
+  // const article = await prismicClient.getByType("clanak", {
+  //   filters: [filter.at("document.id", body.documents[0])],
+  // });
+  console.log(article);
   if (
     // check if the article exists
-    article.results_size > 0 &&
+    article &&
     // prismic sends webhooks for all documents, we only want articles
-    article.results[0].type === "clanak" &&
+    // article.results[0].type === "clanak" &&
     // prismic sends webhooks for all changes, we only want new articles
-    article.results[0].first_publication_date ===
-      article.results[0].last_publication_date
+    article.first_publication_date === article.last_publication_date
   ) {
     // Fetch all contacts' emails from the Sendgrid API and place them in an array
     const client = new Client();
@@ -52,11 +55,10 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
         {
           to: "it@narodipravda.ba",
           dynamic_template_data: {
-            saopcenjeImage: article.results[0].data.istaknuta_slika,
-            title: asText(article.results[0].data.naslov),
-            subtitle:
-              asText(article.results[0].data.tekst).slice(0, 300) + "...",
-            link: `https://narodipravda.ba/vijesti/${article.results[0].uid}`,
+            saopcenjeImage: article.data.istaknuta_slika,
+            title: asText(article.data.naslov),
+            subtitle: asText(article.data.tekst).slice(0, 300) + "...",
+            link: `https://narodipravda.ba/vijesti/${article.uid}`,
           },
         },
       ],
