@@ -49,11 +49,11 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     // Initialize the Sendgrid client and send the email to all contacts
     mail.setApiKey(sendgridKey || "");
     const msg = {
-      to: mailsArray,
+      to: "it@narodipravda.ba",
       from: "novosti@narodipravda.ba",
       personalizations: [
         {
-          to: mailsArray,
+          to: "it@narodipravda.ba",
           dynamic_template_data: {
             saopcenjeImage: article.data.istaknuta_slika,
             title: asText(article.data.naslov),
