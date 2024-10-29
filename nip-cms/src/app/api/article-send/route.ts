@@ -67,7 +67,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
       text: "Hello plain world!",
       html: "<p>Hello HTML world!</p>",
     };
-    await mail.sendMultiple(msg);
+    await mail.send(msg);
     return NextResponse.json({ message: "Success!" }, { status: 200 });
   } else {
     return NextResponse.json({ message: "Not valid" }, { status: 403 });
